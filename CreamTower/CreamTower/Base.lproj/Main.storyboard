@@ -1,24 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kg0-SP-vIO">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Menu View Controller-->
+        <scene sceneID="QQK-Si-PTc">
+            <objects>
+                <viewController id="5MV-kD-mhp" customClass="MenuViewController" customModule="CreamTower" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FyI-Jd-a2l">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MenuIceCream" translatesAutoresizingMaskIntoConstraints="NO" id="B3u-De-WWK">
+                                <rect key="frame" x="0.0" y="345" width="414" height="551"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppTitle" translatesAutoresizingMaskIntoConstraints="NO" id="s3P-JK-lc2">
+                                <rect key="frame" x="87" y="138" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="o4Q-Mb-B2W"/>
+                                    <constraint firstAttribute="height" constant="128" id="zmG-Mm-xsh"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsc-es-cgh">
+                                <rect key="frame" x="122" y="416" width="171" height="66"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="PlayButton"/>
+                                <connections>
+                                    <segue destination="BV1-FR-VrT" kind="show" id="LGf-dV-P13"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZR-tO-Kyh">
+                                <rect key="frame" x="122" y="506" width="171" height="66"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="ShopButton"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T33-q4-QJ6">
+                                <rect key="frame" x="122" y="596" width="171" height="66"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="RankButton"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4gc-4t-n6k"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="T33-q4-QJ6" firstAttribute="leading" secondItem="4gc-4t-n6k" secondAttribute="leading" constant="122" id="6mi-na-1Z8"/>
+                            <constraint firstItem="4gc-4t-n6k" firstAttribute="trailing" secondItem="T33-q4-QJ6" secondAttribute="trailing" constant="121" id="FvK-mq-UlX"/>
+                            <constraint firstItem="T33-q4-QJ6" firstAttribute="top" secondItem="FZR-tO-Kyh" secondAttribute="bottom" constant="24" id="IIL-Ir-QiA"/>
+                            <constraint firstItem="4gc-4t-n6k" firstAttribute="trailing" secondItem="s3P-JK-lc2" secondAttribute="trailing" constant="87" id="O1d-Ba-Yga"/>
+                            <constraint firstItem="4gc-4t-n6k" firstAttribute="trailing" secondItem="FZR-tO-Kyh" secondAttribute="trailing" constant="121" id="VmZ-lA-tqF"/>
+                            <constraint firstItem="B3u-De-WWK" firstAttribute="top" secondItem="FyI-Jd-a2l" secondAttribute="top" constant="345" id="aa8-Vs-ogC"/>
+                            <constraint firstItem="s3P-JK-lc2" firstAttribute="top" secondItem="4gc-4t-n6k" secondAttribute="top" constant="50" id="bkI-t9-2a3"/>
+                            <constraint firstAttribute="bottom" secondItem="B3u-De-WWK" secondAttribute="bottom" id="eo1-fD-MKT"/>
+                            <constraint firstItem="B3u-De-WWK" firstAttribute="trailing" secondItem="4gc-4t-n6k" secondAttribute="trailing" id="hvL-rP-jJn"/>
+                            <constraint firstItem="s3P-JK-lc2" firstAttribute="leading" secondItem="4gc-4t-n6k" secondAttribute="leading" constant="87" id="jG6-6u-RPU"/>
+                            <constraint firstItem="B3u-De-WWK" firstAttribute="leading" secondItem="4gc-4t-n6k" secondAttribute="leading" id="jhk-Fm-f3e"/>
+                            <constraint firstItem="4gc-4t-n6k" firstAttribute="trailing" secondItem="rsc-es-cgh" secondAttribute="trailing" constant="121" id="okw-Tf-rNr"/>
+                            <constraint firstItem="rsc-es-cgh" firstAttribute="leading" secondItem="4gc-4t-n6k" secondAttribute="leading" constant="122" id="wQY-bW-jyZ"/>
+                            <constraint firstItem="rsc-es-cgh" firstAttribute="top" secondItem="s3P-JK-lc2" secondAttribute="bottom" constant="150" id="xd3-0J-2Ag"/>
+                            <constraint firstItem="FZR-tO-Kyh" firstAttribute="top" secondItem="rsc-es-cgh" secondAttribute="bottom" constant="24" id="yht-JB-izm"/>
+                            <constraint firstItem="FZR-tO-Kyh" firstAttribute="leading" secondItem="4gc-4t-n6k" secondAttribute="leading" constant="122" id="zGZ-eV-5Jt"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="42T-F1-knw"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jil-tO-vLa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="318.84057971014494" y="115.84821428571428"/>
+        </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="CreamTower" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="NwD-fJ-PKs"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1270" y="116"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="gsM-cA-KMZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kg0-SP-vIO" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="r06-JW-jOj">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5MV-kD-mhp" kind="relationship" relationship="rootViewController" id="qrb-db-rbw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IIm-79-jEE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-591.304347826087" y="115.84821428571428"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="AppTitle" width="787" height="369"/>
+        <image name="MenuIceCream" width="1125" height="1399"/>
+        <image name="PlayButton" width="147" height="52"/>
+        <image name="RankButton" width="147" height="52"/>
+        <image name="ShopButton" width="147" height="52"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
