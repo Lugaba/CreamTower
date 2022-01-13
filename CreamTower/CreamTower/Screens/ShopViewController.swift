@@ -12,7 +12,14 @@ class ShopViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+//        let label = UILabel()
+//        label.text = "SHOP"
+//        view.addSubview(label)
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+//        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//        label.font = UIFont(name: "Shrikhand-Regular", size: 32)
+        
     }
     
 

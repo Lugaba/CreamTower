@@ -10,22 +10,21 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
-
+    let scene = SKScene(fileNamed: "GameScene")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
+            if let scene = scene {
                 // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
-                
+                //scene.scaleMode = .aspectFit
                 // Present the scene
                 view.presentScene(scene)
             }
             
-            view.ignoresSiblingOrder = true
-            
+                view.ignoresSiblingOrder = true
             view.showsFPS = true
             view.showsNodeCount = true
         }
