@@ -1,5 +1,5 @@
 //
-//  MenuViewController.swift
+//  RankViewController.swift
 //  CreamTower
 //
 //  Created by Luca Hummel on 13/01/22.
@@ -7,17 +7,13 @@
 
 import UIKit
 
-class MenuViewController: UIViewController {
-    
+class RankViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+
         // Do any additional setup after loading the view.
     }
-    
-    
-    override var prefersStatusBarHidden: Bool { return true }
     
 
     /*

@@ -2,12 +2,29 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kg0-SP-vIO">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Shop View Controller-->
+        <scene sceneID="eud-wP-Qg7">
+            <objects>
+                <viewController id="301-wY-oWg" customClass="ShopViewController" customModule="CreamTower" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5go-1p-Yq7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="gZd-HO-A1Y"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="yvq-Xa-KWl"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XH0-h4-qIi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="320" y="-587"/>
+        </scene>
         <!--Menu View Controller-->
         <scene sceneID="QQK-Si-PTc">
             <objects>
@@ -38,15 +55,21 @@
                                 <rect key="frame" x="122" y="506" width="171" height="66"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="ShopButton"/>
+                                <connections>
+                                    <segue destination="301-wY-oWg" kind="show" id="y9V-vt-DdB"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T33-q4-QJ6">
                                 <rect key="frame" x="122" y="596" width="171" height="66"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="RankButton"/>
+                                <connections>
+                                    <segue destination="3TT-54-PiJ" kind="show" id="9mH-y1-0UK"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4gc-4t-n6k"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="T33-q4-QJ6" firstAttribute="leading" secondItem="4gc-4t-n6k" secondAttribute="leading" constant="122" id="6mi-na-1Z8"/>
                             <constraint firstItem="4gc-4t-n6k" firstAttribute="trailing" secondItem="T33-q4-QJ6" secondAttribute="trailing" constant="121" id="FvK-mq-UlX"/>
@@ -71,6 +94,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jil-tO-vLa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="318.84057971014494" y="115.84821428571428"/>
+        </scene>
+        <!--Rank View Controller-->
+        <scene sceneID="ltt-ON-Urj">
+            <objects>
+                <viewController id="3TT-54-PiJ" customClass="RankViewController" customModule="CreamTower" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WTm-AL-pK1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="1pA-xD-ufj"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="KBw-Zd-YWZ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Reh-p4-qS8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="319" y="809"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">

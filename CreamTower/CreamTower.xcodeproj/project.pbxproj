@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF0736AC27906F3F006674C1 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DF0736AA27906F3F006674C1 /* Model.xcdatamodeld */; };
+		DF0736AE27906FD9006674C1 /* RankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0736AD27906FD9006674C1 /* RankViewController.swift */; };
+		DF0736B027907002006674C1 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0736AF27907002006674C1 /* ShopViewController.swift */; };
 		DFD26683278F1B84006B2551 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD26682278F1B84006B2551 /* AppDelegate.swift */; };
 		DFD26685278F1B84006B2551 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DFD26684278F1B84006B2551 /* GameScene.sks */; };
 		DFD26689278F1B84006B2551 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD26688278F1B84006B2551 /* GameScene.swift */; };
@@ -19,6 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DF0736AB27906F3F006674C1 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		DF0736AD27906FD9006674C1 /* RankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankViewController.swift; sourceTree = "<group>"; };
+		DF0736AF27907002006674C1 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		DFD2667F278F1B84006B2551 /* CreamTower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CreamTower.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFD26682278F1B84006B2551 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFD26684278F1B84006B2551 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -71,6 +77,7 @@
 				DFD2668C278F1B84006B2551 /* Main.storyboard */,
 				DFD2668F278F1B85006B2551 /* Assets.xcassets */,
 				DFD26691278F1B85006B2551 /* LaunchScreen.storyboard */,
+				DF0736AA27906F3F006674C1 /* Model.xcdatamodeld */,
 			);
 			path = CreamTower;
 			sourceTree = "<group>";
@@ -80,6 +87,8 @@
 			children = (
 				DFD2668A278F1B84006B2551 /* GameViewController.swift */,
 				DFF599542790618200BFD833 /* MenuViewController.swift */,
+				DF0736AD27906FD9006674C1 /* RankViewController.swift */,
+				DF0736AF27907002006674C1 /* ShopViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -167,7 +176,10 @@
 			files = (
 				DFD26689278F1B84006B2551 /* GameScene.swift in Sources */,
 				DFD2668B278F1B84006B2551 /* GameViewController.swift in Sources */,
+				DF0736AE27906FD9006674C1 /* RankViewController.swift in Sources */,
+				DF0736AC27906F3F006674C1 /* Model.xcdatamodeld in Sources */,
 				DFD26683278F1B84006B2551 /* AppDelegate.swift in Sources */,
+				DF0736B027907002006674C1 /* ShopViewController.swift in Sources */,
 				DFF599552790618200BFD833 /* MenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,6 +339,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -357,6 +370,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -392,6 +406,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		DF0736AA27906F3F006674C1 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DF0736AB27906F3F006674C1 /* Model.xcdatamodel */,
+			);
+			currentVersion = DF0736AB27906F3F006674C1 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = DFD26677278F1B84006B2551 /* Project object */;
 }
