@@ -13,7 +13,7 @@ class GameScene: SKScene {
     var placed = [IceCreamBall]()
     var allBalls = [IceCreamBall]()
     var zpos: CGFloat = 1
-    let casca: SKSpriteNode = SKSpriteNode(imageNamed: "cascaSorvete")
+    let casca: SKSpriteNode = SKSpriteNode(imageNamed: "YellowCasca")
     let fundo: SKShapeNode = SKShapeNode()
     
     var lifes = 3 {
@@ -49,8 +49,10 @@ class GameScene: SKScene {
         background.zPosition = -1
         addChild(background)
         
+        if  FlavorRepository.shared.getAllFlavors().count == 0 {
+            _ = FlavorRepository.shared.createFlavor(name: "chocolate", price: 200, imageName: "chocolateBall", isBought: true, isSelected: true)
+        }
         
-        //_ = FlavorRepository.shared.createFlavor(name: "chocolate", price: 200, imageName: "chocolateBall", isBought: true, isSelected: true)
         let allFlavors = FlavorRepository.shared.getAllFlavors()
         for i in allFlavors {
             if let imageName = i.imageName {
