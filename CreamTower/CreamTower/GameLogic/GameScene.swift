@@ -16,7 +16,7 @@ class GameScene: SKScene {
     let casca: SKSpriteNode = SKSpriteNode(imageNamed: "YellowCasca")
     let nuvens = [SKSpriteNode(imageNamed: "nuvem"), SKSpriteNode(imageNamed: "nuvem"), SKSpriteNode(imageNamed: "nuvem"), SKSpriteNode(imageNamed: "nuvem")]
     let fundo: SKShapeNode = SKShapeNode()
-    
+        
     var hearts = [SKSpriteNode]()
     var lifes: Int = 3 {
         didSet {
@@ -24,7 +24,7 @@ class GameScene: SKScene {
                 heart.removeFromParent()
             }
             for s in 0..<lifes {
-                let vida = SKSpriteNode(imageNamed: "LifeBall")
+                let vida = SKSpriteNode(imageNamed: "lifeBall")
                 vida.size = CGSize(width: 25, height: 25)
                 vida.position = CGPoint(x: (scene!.size.width/2 - 30) + CGFloat(30 * s), y: scene!.size.height-90)
                 addChild(vida)
@@ -38,7 +38,8 @@ class GameScene: SKScene {
     var waitTime = 1.5
     
     var scoreLabel = SKLabelNode()
-    var lifeLabel = SKLabelNode()
+    var moneyLabel = SKLabelNode()
+    var money: Int = 0
     
     var score = 0 {
         didSet {
@@ -48,6 +49,8 @@ class GameScene: SKScene {
                 velocidade += 3
             }
             scoreLabel.text = "\(score)"
+            money += 1
+            moneyLabel.text = "\(money)"
         }
     }
     
@@ -66,10 +69,13 @@ class GameScene: SKScene {
         
         let allFlavors = FlavorRepository.shared.getAllFlavors()
         for i in allFlavors {
-            if let imageName = i.imageName {
-                images.append(imageName)
+            if i.isSelected == true {
+                if let imageName = i.imageName{
+                    images.append(imageName)
+                }
             }
         }
+        images.append("badBall")
         
         scoreLabel.text = "0"
         scoreLabel.position = CGPoint(x: scene!.size.width/2, y: scene!.size.height-70)
@@ -79,7 +85,7 @@ class GameScene: SKScene {
         addChild(scoreLabel)
         
         for s in 0..<lifes {
-            let vida = SKSpriteNode(imageNamed: "LifeBall")
+            let vida = SKSpriteNode(imageNamed: "lifeBall")
             vida.size = CGSize(width: 25, height: 25)
             vida.position = CGPoint(x: (scene!.size.width/2 - 30) + CGFloat(30 * s), y: scene!.size.height-90)
             addChild(vida)
@@ -100,6 +106,19 @@ class GameScene: SKScene {
             nuvens[i].zPosition = -4
             addChild(nuvens[i])
         }
+        
+        moneyLabel.text = "0"
+        moneyLabel.horizontalAlignmentMode = .right
+        moneyLabel.position = CGPoint(x: scene!.size.width - 50, y: scene!.size.height - 65)
+        moneyLabel.fontName = "Shrikhand-Regular"
+        moneyLabel.fontSize = 20
+        moneyLabel.zPosition = 1000
+        addChild(moneyLabel)
+        
+        let goldBall = SKSpriteNode(imageNamed: "goldBall")
+        goldBall.size = CGSize(width: 25, height: 25)
+        goldBall.position = CGPoint(x: scene!.size.width - 30, y: scene!.size.height - 57)
+        addChild(goldBall)
         
         
         casca.position = CGPoint(x: scene!.size.width/2, y: 150)
