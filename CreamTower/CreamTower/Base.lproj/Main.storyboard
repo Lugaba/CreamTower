@@ -133,14 +133,37 @@
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1PE-gV-lhL">
+                                <rect key="frame" x="24" y="35" width="40" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="9tP-g4-8Vh"/>
+                                    <constraint firstAttribute="height" constant="46" id="mBP-VO-2xR"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title=" ">
+                                    <backgroundConfiguration key="background" image="pause.fill" catalog="system"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="pauseGame:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Nyg-Ie-yVP"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1PE-gV-lhL" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="top" constant="35" id="RZp-D3-fn1"/>
+                            <constraint firstItem="1PE-gV-lhL" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="24" id="nhP-cU-Ieu"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="NwD-fJ-PKs"/>
+                    <connections>
+                        <outlet property="pauseButton" destination="1PE-gV-lhL" id="n18-rK-pxQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1270" y="116"/>
+            <point key="canvasLocation" x="1269.5652173913045" y="115.84821428571428"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gsM-cA-KMZ">
@@ -167,6 +190,7 @@
         <image name="PlayButton" width="441" height="156"/>
         <image name="RankButton" width="441" height="156"/>
         <image name="ShopButton" width="441" height="156"/>
+        <image name="pause.fill" catalog="system" width="116" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

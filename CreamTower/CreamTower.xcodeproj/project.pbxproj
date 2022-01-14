@@ -10,6 +10,7 @@
 		DF0736AC27906F3F006674C1 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DF0736AA27906F3F006674C1 /* Model.xcdatamodeld */; };
 		DF0736AE27906FD9006674C1 /* RankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0736AD27906FD9006674C1 /* RankViewController.swift */; };
 		DF0736B027907002006674C1 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0736AF27907002006674C1 /* ShopViewController.swift */; };
+		DF4BEFFD2791E0AC00417000 /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4BEFFC2791E0AC00417000 /* PauseView.swift */; };
 		DF4DAA0C279094D400FA4367 /* FlavorRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DAA0B279094D400FA4367 /* FlavorRepository.swift */; };
 		DF4DAA0F2790966700FA4367 /* IceCreamBall.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DAA0E2790966700FA4367 /* IceCreamBall.swift */; };
 		DFD26683278F1B84006B2551 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD26682278F1B84006B2551 /* AppDelegate.swift */; };
@@ -27,6 +28,7 @@
 		DF0736AB27906F3F006674C1 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		DF0736AD27906FD9006674C1 /* RankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankViewController.swift; sourceTree = "<group>"; };
 		DF0736AF27907002006674C1 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
+		DF4BEFFC2791E0AC00417000 /* PauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseView.swift; sourceTree = "<group>"; };
 		DF4DAA0B279094D400FA4367 /* FlavorRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlavorRepository.swift; sourceTree = "<group>"; };
 		DF4DAA0E2790966700FA4367 /* IceCreamBall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IceCreamBall.swift; sourceTree = "<group>"; };
 		DFD2667F278F1B84006B2551 /* CreamTower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CreamTower.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,6 +55,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF4BEFFB2791E08400417000 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DF4BEFFC2791E0AC00417000 /* PauseView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		DF4DAA0A279094BC00FA4367 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +99,7 @@
 		DFD26681278F1B84006B2551 /* CreamTower */ = {
 			isa = PBXGroup;
 			children = (
+				DF4BEFFB2791E08400417000 /* Views */,
 				DF4DAA0D2790964800FA4367 /* GameLogic */,
 				DF4DAA0A279094BC00FA4367 /* CoreData */,
 				DFF599592790650F00BFD833 /* Info.plist */,
@@ -203,6 +214,7 @@
 				DF4DAA0C279094D400FA4367 /* FlavorRepository.swift in Sources */,
 				DF0736AC27906F3F006674C1 /* Model.xcdatamodeld in Sources */,
 				DFD26683278F1B84006B2551 /* AppDelegate.swift in Sources */,
+				DF4BEFFD2791E0AC00417000 /* PauseView.swift in Sources */,
 				DF0736B027907002006674C1 /* ShopViewController.swift in Sources */,
 				DFF599552790618200BFD833 /* MenuViewController.swift in Sources */,
 			);
