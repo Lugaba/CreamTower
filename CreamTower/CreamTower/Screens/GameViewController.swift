@@ -19,7 +19,6 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         navigationController?.isNavigationBarHidden = true
         
         if let view = self.view as! SKView? {
@@ -31,12 +30,12 @@ class GameViewController: UIViewController {
                 view.presentScene(scene)
             }
             
-                view.ignoresSiblingOrder = true
-            view.showsFPS = true
-            view.showsNodeCount = true
+            view.ignoresSiblingOrder = true
+            view.showsFPS = false
+            view.showsNodeCount = false
         }
     }
-
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -50,15 +49,18 @@ class GameViewController: UIViewController {
             scene?.isPaused = true
             paused = true
             
+            scene?.didFinishUpdate()
+            
             self.view.addSubview(self.pauseView)
             pauseView.backButton.addTarget(self, action: #selector(pauseGame(_:)), for: .touchUpInside)
             pauseView.quitButton.addTarget(self, action: #selector(exitToMenu), for: .touchUpInside)
-
+            
+            
         }
     }
     
     @objc func exitToMenu() {
         navigationController?.popViewController(animated: true)
     }
-
+    
 }

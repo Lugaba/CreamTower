@@ -224,9 +224,11 @@ class GameScene: SKScene {
                 }
             }
         }
-        
-        
+            
     }
+    
+
+    
     
     // MARK: - Movimento
     
@@ -285,6 +287,7 @@ class GameScene: SKScene {
     func cancelActionDropBall() {
         removeAction(forKey: "aKey")
     }
+    
 }
 
 
