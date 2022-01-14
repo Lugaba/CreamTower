@@ -17,9 +17,19 @@ class GameScene: SKScene {
     let nuvens = [SKSpriteNode(imageNamed: "nuvem"), SKSpriteNode(imageNamed: "nuvem"), SKSpriteNode(imageNamed: "nuvem"), SKSpriteNode(imageNamed: "nuvem")]
     let fundo: SKShapeNode = SKShapeNode()
     
-    var lifes = 3 {
+    var hearts = [SKSpriteNode]()
+    var lifes: Int = 3 {
         didSet {
-            lifeLabel.text = String(repeating: "🍦", count: lifes)
+            for heart in hearts {
+                heart.removeFromParent()
+            }
+            for s in 0..<lifes {
+                let vida = SKSpriteNode(imageNamed: "LifeBall")
+                vida.size = CGSize(width: 25, height: 25)
+                vida.position = CGPoint(x: (scene!.size.width/2 - 30) + CGFloat(30 * s), y: scene!.size.height-90)
+                addChild(vida)
+                hearts.append(vida)
+            }
         }
     }
     
@@ -62,19 +72,23 @@ class GameScene: SKScene {
         }
         
         scoreLabel.text = "0"
-        scoreLabel.position = CGPoint(x: scene!.size.width/2, y: scene!.size.height-60)
+        scoreLabel.position = CGPoint(x: scene!.size.width/2, y: scene!.size.height-70)
         scoreLabel.fontName = "Shrikhand-Regular"
+        scoreLabel.fontSize = 40
         scoreLabel.zPosition = 1000
         addChild(scoreLabel)
         
-        lifeLabel.text = "🍦🍦🍦"
-        lifeLabel.position = CGPoint(x: scene!.size.width/2, y: scene!.size.height-90)
-        lifeLabel.fontSize = 20
-        lifeLabel.zPosition = 1000
-        addChild(lifeLabel)
+        for s in 0..<lifes {
+            let vida = SKSpriteNode(imageNamed: "LifeBall")
+            vida.size = CGSize(width: 25, height: 25)
+            vida.position = CGPoint(x: (scene!.size.width/2 - 30) + CGFloat(30 * s), y: scene!.size.height-90)
+            addChild(vida)
+            hearts.append(vida)
+        }
         
         let fundo = SKShapeNode(rectOf: CGSize(width: scene!.size.width, height: 20))
-        fundo.position = CGPoint(x: scene!.size.width/2, y: 0)
+        fundo.position = CGPoint(x: scene!.size.width/2, y: -20)
+        fundo.strokeColor = .clear
         fundo.name = "fundo"
         addChild(fundo)
         
