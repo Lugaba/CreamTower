@@ -43,7 +43,7 @@
                                     <constraint firstAttribute="height" constant="128" id="zmG-Mm-xsh"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78m-yq-ghs">
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="menuScreen" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78m-yq-ghs">
                                 <rect key="frame" x="133.5" y="416" width="147" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="JL7-83-wAR"/>

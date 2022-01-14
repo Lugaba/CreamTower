@@ -45,13 +45,20 @@ class GameViewController: UIViewController {
         if paused {
             scene?.isPaused = false
             paused = false
+            pauseView.removeFromSuperview()
         } else {
             scene?.isPaused = true
             paused = true
             
             self.view.addSubview(self.pauseView)
+            pauseView.backButton.addTarget(self, action: #selector(pauseGame(_:)), for: .touchUpInside)
+            pauseView.quitButton.addTarget(self, action: #selector(exitToMenu), for: .touchUpInside)
 
         }
+    }
+    
+    @objc func exitToMenu() {
+        navigationController?.popViewController(animated: true)
     }
 
 }

@@ -10,13 +10,15 @@ import UIKit
 
 class PauseView: UIView {
     
-    let quitButton:UIButton = UIButton()
+    let backButton:UIButton = UIButton()
     var titleLabel: UILabel = UILabel()
     var scoreLabel: UILabel = UILabel()
     var highScoreLabel: UILabel = UILabel()
     
     var pointsLabel: UILabel = UILabel()
     var highPointsLabel: UILabel = UILabel()
+    
+    var quitButton: UIButton = UIButton()
     
     private let container: UIView = {
         let v = UIView()
@@ -34,6 +36,9 @@ class PauseView: UIView {
         self.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
         
         self.addSubview(container)
+        
+        
+
         
         titleLabel.text = "Game Paused"
         titleLabel.font = UIFont(name: "Shrikhand-Regular", size: 30)
@@ -61,6 +66,11 @@ class PauseView: UIView {
         highPointsLabel.textColor = UIColor(named: "grayApp")
         self.container.addSubview(self.highPointsLabel)
         
+        
+        
+        backButton.setBackgroundImage(UIImage(named: "backButton"), for: .normal)
+        self.container.addSubview(self.backButton)
+        
         quitButton.setBackgroundImage(UIImage(named: "quitButton"), for: .normal)
         self.container.addSubview(self.quitButton)
     }
@@ -79,11 +89,11 @@ class PauseView: UIView {
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.titleLabel.centerXAnchor.constraint(equalTo: self.container.centerXAnchor).isActive = true
-        self.titleLabel.topAnchor.constraint(equalTo: self.container.topAnchor, constant: 54).isActive = true
+        self.titleLabel.topAnchor.constraint(equalTo: self.container.topAnchor, constant: 40).isActive = true
         self.titleLabel.heightAnchor.constraint(equalToConstant: 45).isActive = true
         
         scoreLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.scoreLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 40).isActive = true
+        self.scoreLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 30).isActive = true
         self.scoreLabel.leadingAnchor.constraint(equalTo: self.container.leadingAnchor, constant: 32).isActive = true
         self.scoreLabel.heightAnchor.constraint(equalToConstant: 45).isActive = true
         
@@ -102,11 +112,17 @@ class PauseView: UIView {
         self.highPointsLabel.topAnchor.constraint(equalTo: self.highScoreLabel.topAnchor, constant: 32).isActive = true
         self.highPointsLabel.heightAnchor.constraint(equalToConstant: 45).isActive = true
         
-        quitButton.translatesAutoresizingMaskIntoConstraints = false
+        backButton.translatesAutoresizingMaskIntoConstraints = false
         //self.quitButton.topAnchor.constraint(equalTo: pointsLabel.bottomAnchor).isActive = true
-        self.quitButton.centerXAnchor.constraint(equalTo: self.container.centerXAnchor).isActive = true
-        self.quitButton.bottomAnchor.constraint(equalTo: self.container.bottomAnchor, constant: -48).isActive = true
-        self.quitButton.heightAnchor.constraint(equalToConstant: 52).isActive = true
-        self.quitButton.widthAnchor.constraint(equalToConstant: 147).isActive = true
+        self.backButton.centerXAnchor.constraint(equalTo: self.container.centerXAnchor).isActive = true
+        self.backButton.heightAnchor.constraint(equalToConstant: 52).isActive = true
+        self.backButton.widthAnchor.constraint(equalToConstant: 147).isActive = true
+        
+        quitButton.translatesAutoresizingMaskIntoConstraints = false
+        self.quitButton.topAnchor.constraint(equalTo: self.backButton.bottomAnchor, constant: 8).isActive = true
+        self.quitButton.bottomAnchor.constraint(equalTo: self.container.bottomAnchor, constant: -40).isActive = true
+        self.quitButton.centerXAnchor.constraint(equalTo: self.backButton.centerXAnchor).isActive = true
+        self.quitButton.heightAnchor.constraint(equalToConstant: 28).isActive = true
+        self.quitButton.widthAnchor.constraint(equalToConstant: 90).isActive = true
     }
 }
