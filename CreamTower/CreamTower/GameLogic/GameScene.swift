@@ -14,6 +14,7 @@ class GameScene: SKScene {
     var allBalls = [IceCreamBall]()
     var zpos: CGFloat = 1
     let casca: SKSpriteNode = SKSpriteNode(imageNamed: "YellowCasca")
+    let nuvens = [SKSpriteNode(imageNamed: "nuvem"), SKSpriteNode(imageNamed: "nuvem"), SKSpriteNode(imageNamed: "nuvem"), SKSpriteNode(imageNamed: "nuvem")]
     let fundo: SKShapeNode = SKShapeNode()
     
     var lifes = 3 {
@@ -46,7 +47,7 @@ class GameScene: SKScene {
         let background = SKSpriteNode(imageNamed: "backBlue")
         background.position = CGPoint(x: scene!.size.width/2, y: scene!.size.height/2)
         background.blendMode = .replace
-        background.zPosition = -1
+        background.zPosition = -5
         addChild(background)
         
         if  FlavorRepository.shared.getAllFlavors().count == 0 {
@@ -75,8 +76,17 @@ class GameScene: SKScene {
         let fundo = SKShapeNode(rectOf: CGSize(width: scene!.size.width, height: 20))
         fundo.position = CGPoint(x: scene!.size.width/2, y: 0)
         fundo.name = "fundo"
-        fundo.fillColor = .green
         addChild(fundo)
+        
+        
+        let yRandom = Int.random(in: 0...Int(scene?.size.height ?? -100))
+        for i in 0..<nuvens.count {
+            nuvens[i].position = CGPoint(x: Int.random(in: 0...Int(scene?.size.width ?? -100)), y: yRandom + i * 200)
+            nuvens[i].name = "nuvem"
+            nuvens[i].zPosition = -4
+            addChild(nuvens[i])
+        }
+        
         
         casca.position = CGPoint(x: scene!.size.width/2, y: 150)
         casca.name = "casca"
@@ -89,6 +99,9 @@ class GameScene: SKScene {
     
     // MARK: - Atualizar bolas queda e colisao
     override func update(_ currentTime: TimeInterval) {
+        for i in nuvens {
+            i.position.x += 0.05
+        }
         if vivo == true {
             for iceCreamBall in allBalls {
                 let ball = iceCreamBall.iceCreamBallNode
@@ -118,6 +131,16 @@ class GameScene: SKScene {
 
                         if (placed[placed.count - 1].iceCreamBallNode.position.y > (scene?.size.height ?? 0)/3) {
                             casca.run(SKAction.moveBy(x: 0, y: -ball.size.height+10, duration: 0.2))
+                            for i in nuvens {
+                                i.run(SKAction.moveBy(x: 0, y: -ball.size.height, duration: 0.5))
+                                if i.position.y < -(i.size.height/2) {
+                                    i.position.y = scene?.size.height ?? 1000 + i.size.height/2
+                                }
+                                if i.position.x > (scene?.size.width)! + i.size.width/2 {
+                                    i.position.x = 0 - i.size.width/2
+                                }
+                            }
+                            
                             for iceCreamBallPlaced in placed {
                                 let ballPlaced = iceCreamBallPlaced.iceCreamBallNode
                                 ballPlaced.run(SKAction.moveBy(x: 0, y: -ball.size.height+10, duration: 0.2))
