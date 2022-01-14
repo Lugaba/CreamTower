@@ -134,7 +134,7 @@ class GameScene: SKScene {
                             for i in nuvens {
                                 i.run(SKAction.moveBy(x: 0, y: -ball.size.height, duration: 0.5))
                                 if i.position.y < -(i.size.height/2) {
-                                    i.position.y = scene?.size.height ?? 1000 + i.size.height/2
+                                    i.position.y = scene?.size.height ?? 1000 + i.size.height
                                 }
                                 if i.position.x > (scene?.size.width)! + i.size.width/2 {
                                     i.position.x = 0 - i.size.width/2
