@@ -8,18 +8,34 @@
 import UIKit
 
 class ShopViewController: UIViewController {
-
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var unitsLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        let label = UILabel()
-//        label.text = "SHOP"
-//        view.addSubview(label)
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-//        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//        label.font = UIFont(name: "Shrikhand-Regular", size: 32)
+        navigationController?.isNavigationBarHidden = true
         
+        titleLabel.text = "Shop"
+        titleLabel.font = UIFont(name: "Shrikhand-Regular", size: 45)
+        titleLabel.textColor = UIColor(named: "pinkApp")
+
+        unitsLabel.text = "3 of 49"
+        unitsLabel.font = UIFont(name: "Shrikhand-Regular", size: 20)
+        unitsLabel.textColor = UIColor(named: "grayApp")
+
+        
+    }
+    
+    
+    @IBAction func exitToMenu(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
     
 
