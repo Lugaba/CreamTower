@@ -27,6 +27,7 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var money = 0
     
     var type: objectType = .flavor
+    var itemArray = [Flavor]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,11 +50,14 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         var bought = 0
         for i in FlavorRepository.shared.getAllFlavors() {
-            if i.isBought == true {
-                bought += 1
+            if i.type == "flavor" {
+                itemArray.append(i)
+                if i.isBought == true {
+                    bought += 1
+                }
             }
         }
-        unitsLabel.text = "\(bought) of \(FlavorRepository.shared.getAllFlavors().count)"
+        unitsLabel.text = "\(bought) of \(itemArray.count)"
         unitsLabel.font = UIFont(name: "Shrikhand-Regular", size: 20)
         unitsLabel.textColor = UIColor(named: "grayApp")
         
@@ -66,29 +70,38 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     @IBAction func suitDidChange(_ sender: UISegmentedControl) {
+        itemArray = []
+        var typeStr = ""
         switch sender.selectedSegmentIndex {
             case 0:
                 type = .flavor
+                typeStr = "flavor"
             case 1:
                 type = .cone
-                var lista = ConeRepository.shared.getAllCones()
+                typeStr = "cone"
             case 2:
                 type = .background
-                var busca = FlavorRepository.shared.getAllFlavors()
             default:
                 type = .flavor
-                var busca = FlavorRepository.shared.getAllFlavors()
         }
+        
+        var bought = 0
+        for i in FlavorRepository.shared.getAllFlavors() {
+            if i.type == typeStr {
+                itemArray.append(i)
+                if i.isBought == true {
+                    bought += 1
+                }
+            }
+        }
+        unitsLabel.text = "\(bought) of \(itemArray.count)"
+        
         shopCollection.reloadData()
     }
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if type == .flavor{
-            return FlavorRepository.shared.getAllFlavors().count
-        } else {
-            return ConeRepository.shared.getAllCones().count
-        }
+            return itemArray.count
     }
     
     
@@ -102,19 +115,18 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
         cell.layer.shadowRadius = 4
         cell.layer.masksToBounds = false
         
-        let flavors = FlavorRepository.shared.getAllFlavors()
-        cell.titleLabel.text = flavors[indexPath.row].name
+        cell.titleLabel.text = itemArray[indexPath.row].name
         cell.titleLabel.font = UIFont(name: "Shrikhand-Regular", size: 20)
         cell.titleLabel.textColor = UIColor(named: "pinkApp")
         
-        cell.imageItem.image = UIImage(named: flavors[indexPath.row].imageName ?? "chocolateBall")
+        cell.imageItem.image = UIImage(named: itemArray[indexPath.row].imageName ?? "chocolateBall")
         
         cell.StatusLabel.font = UIFont(name: "Shrikhand-Regular", size: 15)
         cell.StatusLabel.textColor = UIColor(named: "grayApp")
-        if flavors[indexPath.row].isBought == true {
+        if itemArray[indexPath.row].isBought == true {
             cell.lockView.isHidden = true
             cell.goldIcon.isHidden = true
-            if flavors[indexPath.row].isSelected == false{
+            if itemArray[indexPath.row].isSelected == false{
                 cell.StatusLabel.text = "Select"
             } else {
                 cell.StatusLabel.text = "Selected"
@@ -122,10 +134,11 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
         } else {
             cell.lockView.isHidden = false
+            cell.goldIcon.isHidden = false
             cell.lockView.layer.cornerRadius = 15
             cell.lockView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
             
-            cell.StatusLabel.text = "\(flavors[indexPath.row].price)"
+            cell.StatusLabel.text = "\(itemArray	[indexPath.row].price)"
             cell.StatusLabel.textColor = .white
         }
         
@@ -133,15 +146,21 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let flavors = FlavorRepository.shared.getAllFlavors()
-        if flavors[indexPath.row].isBought == true {
-            flavors[indexPath.row].isSelected.toggle()
+        if itemArray[indexPath.row].isBought == true {
+            itemArray[indexPath.row].isSelected.toggle()
+            if type == .cone || type == .background {
+                for index in 0..<itemArray.count {
+                    if index != indexPath.row && itemArray[index].isSelected == true {
+                        itemArray[index].isSelected.toggle()
+                    }
+                }
+            }
             FlavorRepository.shared.saveContext()
         } else {
-            if money > flavors[indexPath.row].price {
-                flavors[indexPath.row].isBought.toggle()
+            if money > itemArray[indexPath.row].price {
+                itemArray[indexPath.row].isBought.toggle()
                 FlavorRepository.shared.saveContext()
-                money -= Int(flavors[indexPath.row].price)
+                money -= Int(itemArray[indexPath.row].price)
                 defaults.set(money, forKey: "Money")
             }
             

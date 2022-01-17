@@ -13,7 +13,7 @@ class GameScene: SKScene {
     var placed = [IceCreamBall]()
     var allBalls = [IceCreamBall]()
     var zpos: CGFloat = 1
-    let casca: SKSpriteNode = SKSpriteNode(imageNamed: "YellowCasca")
+    var casca: SKSpriteNode = SKSpriteNode()
     let nuvens = [SKSpriteNode(imageNamed: "nuvem"), SKSpriteNode(imageNamed: "nuvem"), SKSpriteNode(imageNamed: "nuvem"), SKSpriteNode(imageNamed: "nuvem")]
     let fundo: SKShapeNode = SKShapeNode()
         
@@ -68,11 +68,18 @@ class GameScene: SKScene {
         background.zPosition = -5
         addChild(background)
         
-        let allFlavors = FlavorRepository.shared.getAllFlavors()
-        for i in allFlavors {
-            if i.isSelected == true {
-                if let imageName = i.imageName{
-                    images.append(imageName)
+        for i in FlavorRepository.shared.getAllFlavors() {
+            if i.type == "flavor" {
+                if i.isSelected == true {
+                    if let imageName = i.imageName{
+                        images.append(imageName)
+                    }
+                }
+            } else if i.type == "cone" {
+                if i.isSelected == true {
+                    if let imageName = i.imageName{
+                        casca = SKSpriteNode(imageNamed: imageName)
+                    }
                 }
             }
         }

@@ -13,9 +13,10 @@
         <attribute name="isSelected" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="price" optional="YES" attributeType="Integer 32" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Flavor" positionX="-63" positionY="-18" width="128" height="104"/>
         <element name="Cone" positionX="-63" positionY="18" width="128" height="104"/>
+        <element name="Flavor" positionX="-63" positionY="-18" width="128" height="119"/>
     </elements>
 </model>

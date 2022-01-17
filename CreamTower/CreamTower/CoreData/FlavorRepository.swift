@@ -72,7 +72,7 @@ class FlavorRepository {
     
     // MARK: - Core Data Creating support
     
-    func createFlavor(name: String, price: Int32, imageName: String, isBought: Bool, isSelected: Bool) -> Flavor {
+    func createFlavor(name: String, price: Int32, imageName: String, isBought: Bool, isSelected: Bool, type: String) -> Flavor {
         let flavor = Flavor(context: self.persistentContainer.viewContext)
         
         flavor.name = name
@@ -80,6 +80,7 @@ class FlavorRepository {
         flavor.imageName = imageName
         flavor.isBought = isBought
         flavor.isSelected = isSelected
+        flavor.type = type
         
         self.saveContext()
         return flavor
