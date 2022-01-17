@@ -54,7 +54,12 @@ class GameScene: SKScene {
         }
     }
     
+    let defaults = UserDefaults.standard
+
+    
     override func didMove(to view: SKView) {
+        
+        money = defaults.integer(forKey: "Money")
         
         
         let background = SKSpriteNode(imageNamed: "backBlue")
@@ -103,7 +108,7 @@ class GameScene: SKScene {
             addChild(nuvens[i])
         }
         
-        moneyLabel.text = "0"
+        moneyLabel.text = "\(money)"
         moneyLabel.horizontalAlignmentMode = .right
         moneyLabel.position = CGPoint(x: scene!.size.width - 50, y: scene!.size.height - 65)
         moneyLabel.fontName = "Shrikhand-Regular"
@@ -219,6 +224,8 @@ class GameScene: SKScene {
                     allBalls.remove(at: allBalls.firstIndex(of: iceCreamBall)!)
                 }
             }
+        } else {
+            defaults.set(money, forKey: "Money")
         }
             
     }

@@ -17,8 +17,13 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     let reuseIdentifier = "shopCell"
     
+    let defaults = UserDefaults.standard
+    var money = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        money = defaults.integer(forKey: "Money")
         
         navigationController?.isNavigationBarHidden = true
         
@@ -26,7 +31,7 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
         titleLabel.font = UIFont(name: "Shrikhand-Regular", size: 45)
         titleLabel.textColor = UIColor(named: "pinkApp")
         
-        moneyLabel.text = "500.000"
+        moneyLabel.text = "\(money)"
         moneyLabel.font = UIFont(name: "Shrikhand-Regular", size: 20)
         moneyLabel.textColor = UIColor(named: "grayApp")
         
@@ -97,7 +102,20 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("oi")
+        let flavors = FlavorRepository.shared.getAllFlavors()
+        if flavors[indexPath.row].isBought == true {
+            flavors[indexPath.row].isSelected.toggle()
+            FlavorRepository.shared.saveContext()
+        } else {
+            if money > flavors[indexPath.row].price {
+                flavors[indexPath.row].isBought.toggle()
+                FlavorRepository.shared.saveContext()
+                money -= Int(flavors[indexPath.row].price)
+                defaults.set(money, forKey: "Money")
+            }
+            
+        }
+        collectionView.reloadData()
     }
     
     

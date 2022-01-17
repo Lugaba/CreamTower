@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if  FlavorRepository.shared.getAllFlavors().count == 0 {
             _ = FlavorRepository.shared.createFlavor(name: "Chocolate", price: 200, imageName: "chocolateBall", isBought: true, isSelected: true)
-            _ = FlavorRepository.shared.createFlavor(name: "Life", price: 1000, imageName: "lifeBall", isBought: true, isSelected: false)
-            _ = FlavorRepository.shared.createFlavor(name: "Gold", price: 10000, imageName: "goldBall", isBought: false, isSelected: false)
+            _ = FlavorRepository.shared.createFlavor(name: "Life", price: 10, imageName: "lifeBall", isBought: false, isSelected: false)
+            _ = FlavorRepository.shared.createFlavor(name: "Gold", price: 5, imageName: "goldBall", isBought: false, isSelected: false)
         }
         
         return true
