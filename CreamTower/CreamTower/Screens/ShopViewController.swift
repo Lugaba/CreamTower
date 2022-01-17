@@ -66,14 +66,12 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     @IBAction func suitDidChange(_ sender: UISegmentedControl) {
-        var busca = [Flavor]()
         switch sender.selectedSegmentIndex {
             case 0:
                 type = .flavor
             case 1:
                 type = .cone
                 var lista = ConeRepository.shared.getAllCones()
-                busca = lista
             case 2:
                 type = .background
                 var busca = FlavorRepository.shared.getAllFlavors()
@@ -81,16 +79,6 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 type = .flavor
                 var busca = FlavorRepository.shared.getAllFlavors()
         }
-        if type == .flavor {
-            var busca = FlavorRepository.shared.getAllFlavors()
-        }
-        var bought = 0
-        for i in busca {
-            if i.isBought == true {
-                bought += 1
-            }
-        }
-        unitsLabel.text = "\(bought) of \(FlavorRepository.shared.getAllFlavors().count)"
         shopCollection.reloadData()
     }
     
