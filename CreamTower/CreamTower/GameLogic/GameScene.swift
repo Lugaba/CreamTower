@@ -63,10 +63,6 @@ class GameScene: SKScene {
         background.zPosition = -5
         addChild(background)
         
-        if  FlavorRepository.shared.getAllFlavors().count == 0 {
-            _ = FlavorRepository.shared.createFlavor(name: "chocolate", price: 200, imageName: "chocolateBall", isBought: true, isSelected: true)
-        }
-        
         let allFlavors = FlavorRepository.shared.getAllFlavors()
         for i in allFlavors {
             if i.isSelected == true {
