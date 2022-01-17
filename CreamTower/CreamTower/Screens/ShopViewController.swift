@@ -7,6 +7,12 @@
 
 import UIKit
 
+enum objectType {
+    case flavor
+    case cone
+    case background
+}
+
 class ShopViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -19,6 +25,8 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     let defaults = UserDefaults.standard
     var money = 0
+    
+    var type: objectType = .flavor
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,9 +65,44 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
         navigationController?.popViewController(animated: true)
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return FlavorRepository.shared.getAllFlavors().count
+    @IBAction func suitDidChange(_ sender: UISegmentedControl) {
+        var busca = [Flavor]()
+        switch sender.selectedSegmentIndex {
+            case 0:
+                type = .flavor
+            case 1:
+                type = .cone
+                var lista = ConeRepository.shared.getAllCones()
+                busca = lista
+            case 2:
+                type = .background
+                var busca = FlavorRepository.shared.getAllFlavors()
+            default:
+                type = .flavor
+                var busca = FlavorRepository.shared.getAllFlavors()
+        }
+        if type == .flavor {
+            var busca = FlavorRepository.shared.getAllFlavors()
+        }
+        var bought = 0
+        for i in busca {
+            if i.isBought == true {
+                bought += 1
+            }
+        }
+        unitsLabel.text = "\(bought) of \(FlavorRepository.shared.getAllFlavors().count)"
+        shopCollection.reloadData()
     }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if type == .flavor{
+            return FlavorRepository.shared.getAllFlavors().count
+        } else {
+            return ConeRepository.shared.getAllCones().count
+        }
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! ShopCollectionViewCell
