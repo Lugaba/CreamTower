@@ -259,7 +259,7 @@
                                     <backgroundConfiguration key="background" image="RankButton"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="3TT-54-PiJ" kind="show" id="9yA-Ch-1d4"/>
+                                    <action selector="goToRank:" destination="5MV-kD-mhp" eventType="touchUpInside" id="F7C-dg-Qrp"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -255,6 +255,7 @@ class GameScene: SKScene {
             }
         } else {
             defaults.set(money, forKey: "Money")
+            defaults.set(score, forKey: "HighScore")
         }
             
     }

@@ -14,12 +14,19 @@ class MenuViewController: UIViewController {
         
         navigationController?.isNavigationBarHidden = true
         // Do any additional setup after loading the view.
+        
+        ManagerGameCenter.authenticateUser(from: self, label: UILabel())
     }
     
     
     override var prefersStatusBarHidden: Bool { return true }
     
-
+    @IBAction func goToRank(_ sender: Any) {
+        if (!ManagerGameCenter().toSpecificPage(from: self, to: .leaderboards)) {
+            print("Not connected")
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
