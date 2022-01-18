@@ -11,14 +11,20 @@ import GameplayKit
 
 class GameViewController: UIViewController {
     var currentGame: GameScene?
+    let defaults = UserDefaults.standard
     
     @IBOutlet weak var pauseButton: UIButton!
     
     var paused = false
     private lazy var pauseView = PauseView()
+    private lazy var endGameView = EndGameView()
     
+    var score = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        endGameView.removeFromSuperview()
+
         
         navigationController?.isNavigationBarHidden = true
         
@@ -44,34 +50,35 @@ class GameViewController: UIViewController {
         return true
     }
     
-    //    @IBAction func pauseGame(_ sender: Any) {
-    //        if paused {
-    //            scene?.isPaused = false
-    //            paused = false
-    //            pauseView.removeFromSuperview()
-    //        } else {
-    //            scene?.isPaused = true
-    //            paused = true
-    //
-    //            scene?.didFinishUpdate()
-    //
-    //            self.view.addSubview(self.pauseView)
-    //            pauseView.backButton.addTarget(self, action: #selector(pauseGame(_:)), for: .touchUpInside)
-    //            pauseView.quitButton.addTarget(self, action: #selector(exitToMenu), for: .touchUpInside)
-    //
-    //
-    //        }
-    //    }
+    func pauseGame(score: Int) {
+        self.score = score
+        if currentGame?.isPaused == false {
+            pauseView.removeFromSuperview()
+        } else {
+
+            self.view.addSubview(self.pauseView)
+            pauseView.backButton.addTarget(self, action: #selector(pauseGameToggle), for: .touchUpInside)
+            pauseView.quitButton.addTarget(self, action: #selector(exitToMenu), for: .touchUpInside)
+            pauseView.setPointsText(score: score)
+            pauseView.setHighPointsText(highScore: defaults.integer(forKey: "HighScore"))
+        }
+    }
+    
+    @objc func pauseGameToggle() {
+        currentGame?.isPaused.toggle()
+        pauseGame(score: score)
+    }
     
     @objc func exitToMenu() {
         navigationController?.popViewController(animated: true)
     }
     
     func showEngGameView(score: Int) {
-        self.view.addSubview(self.pauseView)
-        //pauseView.backButton.addTarget(self, action: #selector(pauseGame(_:)), for: .touchUpInside)
-        pauseView.quitButton.addTarget(self, action: #selector(exitToMenu), for: .touchUpInside)
-        pauseView.pointsLabel.text = "\(score)"
+        self.view.addSubview(self.endGameView)
+        endGameView.playButton.addTarget(self, action: #selector(viewDidLoad), for: .touchUpInside)
+        endGameView.quitButton.addTarget(self, action: #selector(exitToMenu), for: .touchUpInside)
+        endGameView.setPointsText(score: score)
+        endGameView.setHighPointsText(highScore: defaults.integer(forKey: "HighScore"))
     }
     
 }

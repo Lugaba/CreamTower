@@ -1,16 +1,16 @@
 //
-//  PauseView.swift
+//  EndGameView.swift
 //  CreamTower
 //
-//  Created by Luca Hummel on 14/01/22.
+//  Created by Luca Hummel on 18/01/22.
 //
 
 import UIKit
 
 
-class PauseView: UIView {
+class EndGameView: UIView {
     
-    let backButton:UIButton = UIButton()
+    let playButton:UIButton = UIButton()
     var titleLabel: UILabel = UILabel()
     var scoreLabel: UILabel = UILabel()
     var highScoreLabel: UILabel = UILabel()
@@ -48,7 +48,7 @@ class PauseView: UIView {
         
 
         
-        titleLabel.text = "Game Paused"
+        titleLabel.text = "Game Over"
         titleLabel.font = UIFont(name: "Shrikhand-Regular", size: 30)
         titleLabel.textColor = UIColor(named: "pinkApp")
         self.container.addSubview(self.titleLabel)
@@ -76,8 +76,8 @@ class PauseView: UIView {
         
         
         
-        backButton.setBackgroundImage(UIImage(named: "backButton"), for: .normal)
-        self.container.addSubview(self.backButton)
+        playButton.setBackgroundImage(UIImage(named: "PlayButton"), for: .normal)
+        self.container.addSubview(self.playButton)
         
         quitButton.setBackgroundImage(UIImage(named: "quitButton"), for: .normal)
         self.container.addSubview(self.quitButton)
@@ -120,17 +120,18 @@ class PauseView: UIView {
         self.highPointsLabel.topAnchor.constraint(equalTo: self.highScoreLabel.topAnchor, constant: 32).isActive = true
         self.highPointsLabel.heightAnchor.constraint(equalToConstant: 45).isActive = true
         
-        backButton.translatesAutoresizingMaskIntoConstraints = false
+        playButton.translatesAutoresizingMaskIntoConstraints = false
         //self.quitButton.topAnchor.constraint(equalTo: pointsLabel.bottomAnchor).isActive = true
-        self.backButton.centerXAnchor.constraint(equalTo: self.container.centerXAnchor).isActive = true
-        self.backButton.heightAnchor.constraint(equalToConstant: 52).isActive = true
-        self.backButton.widthAnchor.constraint(equalToConstant: 147).isActive = true
+        self.playButton.centerXAnchor.constraint(equalTo: self.container.centerXAnchor).isActive = true
+        self.playButton.heightAnchor.constraint(equalToConstant: 52).isActive = true
+        self.playButton.widthAnchor.constraint(equalToConstant: 147).isActive = true
         
         quitButton.translatesAutoresizingMaskIntoConstraints = false
-        self.quitButton.topAnchor.constraint(equalTo: self.backButton.bottomAnchor, constant: 8).isActive = true
+        self.quitButton.topAnchor.constraint(equalTo: self.playButton.bottomAnchor, constant: 8).isActive = true
         self.quitButton.bottomAnchor.constraint(equalTo: self.container.bottomAnchor, constant: -40).isActive = true
-        self.quitButton.centerXAnchor.constraint(equalTo: self.backButton.centerXAnchor).isActive = true
+        self.quitButton.centerXAnchor.constraint(equalTo: self.playButton.centerXAnchor).isActive = true
         self.quitButton.heightAnchor.constraint(equalToConstant: 28).isActive = true
         self.quitButton.widthAnchor.constraint(equalToConstant: 90).isActive = true
     }
 }
+

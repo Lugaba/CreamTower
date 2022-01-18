@@ -60,11 +60,15 @@ class GameScene: SKScene {
         }
     }
     
+    var highScore = 0
+    
     let defaults = UserDefaults.standard
+    
+    let pauseButton = SKSpriteNode(imageNamed: "pauseButton")
     
     
     override func didMove(to view: SKView) {
-        
+        highScore = defaults.integer(forKey: "HighScore")
         money = defaults.integer(forKey: "Money")
         
         for i in ItemRepository.shared.getAllItems() {
@@ -108,6 +112,10 @@ class GameScene: SKScene {
         }
         
         images.append("badBall")
+        
+        pauseButton.size = CGSize(width: 36, height: 54)
+        pauseButton.position = CGPoint(x: 40, y: scene!.size.height-55)
+        addChild(pauseButton)
         
         scoreLabel.text = "0"
         scoreLabel.position = CGPoint(x: scene!.size.width/2, y: scene!.size.height-70)
@@ -257,8 +265,10 @@ class GameScene: SKScene {
             }
         } else {
             defaults.set(money, forKey: "Money")
-            defaults.set(score, forKey: "HighScore")
             
+            if score > highScore {
+                defaults.set(score, forKey: "HighScore")
+            }
             
             gameViewController.showEngGameView(score: score)
         }
@@ -282,8 +292,17 @@ class GameScene: SKScene {
                 ball.position.x = casca.position.x
             }
         }
-        
-        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        let location = touch.location(in: self)
+        let objects = nodes(at: location)
+
+        if objects.contains(pauseButton) {
+            self.isPaused.toggle()
+            gameViewController.pauseGame(score: score)
+        }
     }
     
     // MARK: - Create Ice Cream Ball
