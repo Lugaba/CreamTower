@@ -9,18 +9,20 @@ import SpriteKit
 
 class GameScene: SKScene {
     
+    var gameViewController: GameViewController!
+    
     var images: [String] = []
     var placed = [IceCreamBall]()
     var allBalls = [IceCreamBall]()
     var zpos: CGFloat = 1
     var casca: SKSpriteNode = SKSpriteNode(imageNamed: "MatrixCasca")
     var background = SKSpriteNode(imageNamed: "backMatrix")
-
+    
     var nuvens = [SKSpriteNode]()
     let fundo: SKShapeNode = SKShapeNode()
     
     var matrix = true
-        
+    
     var hearts = [SKSpriteNode]()
     var lifes: Int = 3 {
         didSet {
@@ -59,12 +61,12 @@ class GameScene: SKScene {
     }
     
     let defaults = UserDefaults.standard
-
+    
     
     override func didMove(to view: SKView) {
         
         money = defaults.integer(forKey: "Money")
-  
+        
         for i in ItemRepository.shared.getAllItems() {
             if i.type == "flavor" {
                 if i.isSelected == true {
@@ -191,7 +193,7 @@ class GameScene: SKScene {
                         allBalls.remove(at: allBalls.firstIndex(of: iceCreamBall)!)
                         
                         // Descer sorvete com mais de 15 bolas
-
+                        
                         if (placed[placed.count - 1].iceCreamBallNode.position.y > (scene?.size.height ?? 0)/3) {
                             casca.run(SKAction.moveBy(x: 0, y: -ball.size.height+10, duration: 0.2))
                             for i in nuvens {
@@ -256,11 +258,14 @@ class GameScene: SKScene {
         } else {
             defaults.set(money, forKey: "Money")
             defaults.set(score, forKey: "HighScore")
-        }
             
+            
+            gameViewController.showEngGameView(score: score)
+        }
+        
     }
     
-
+    
     
     
     // MARK: - Movimento
