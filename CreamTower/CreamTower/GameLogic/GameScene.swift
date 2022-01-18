@@ -72,14 +72,14 @@ class GameScene: SKScene {
         money = defaults.integer(forKey: "Money")
         
         for i in ItemRepository.shared.getAllItems() {
-            if i.type == "flavor" {
+            if i.type == objectType.flavor.rawValue {
                 if i.isSelected == true {
                     if let imageName = i.imageName{
                         images.append(imageName)
                         matrix = false
                     }
                 }
-            } else if i.type == "cone" {
+            } else if i.type == objectType.cone.rawValue  {
                 if i.isSelected == true {
                     if let imageName = i.imageName{
                         casca = SKSpriteNode(imageNamed: imageName)

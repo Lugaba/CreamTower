@@ -7,12 +7,6 @@
 
 import UIKit
 
-enum objectType {
-    case flavor
-    case cone
-    case background
-}
-
 class ShopViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -50,7 +44,7 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         var bought = 0
         for i in ItemRepository.shared.getAllItems() {
-            if i.type == "flavor" {
+            if i.type == objectType.flavor.rawValue {
                 itemArray.append(i)
                 if i.isBought == true {
                     bought += 1
@@ -71,24 +65,20 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     @IBAction func suitDidChange(_ sender: UISegmentedControl) {
         itemArray = []
-        var typeStr = ""
         switch sender.selectedSegmentIndex {
             case 0:
                 type = .flavor
-                typeStr = "flavor"
             case 1:
                 type = .cone
-                typeStr = "cone"
             case 2:
                 type = .background
-                typeStr = "background"
             default:
                 type = .flavor
         }
         
         var bought = 0
         for i in ItemRepository.shared.getAllItems() {
-            if i.type == typeStr {
+            if i.type == type.rawValue {
                 itemArray.append(i)
                 if i.isBought == true {
                     bought += 1
