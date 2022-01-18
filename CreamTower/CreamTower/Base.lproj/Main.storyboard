@@ -231,6 +231,7 @@
                                     <backgroundConfiguration key="background" image="PlayButton"/>
                                 </buttonConfiguration>
                                 <connections>
+                                    <action selector="playGame:" destination="5MV-kD-mhp" eventType="touchUpInside" id="OIT-22-LjR"/>
                                     <segue destination="BV1-FR-VrT" kind="show" id="qwK-Gj-A7i"/>
                                 </connections>
                             </button>

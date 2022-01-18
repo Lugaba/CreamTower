@@ -14,6 +14,7 @@
 		DF4BF0042795CDD200417000 /* ShopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4BF0032795CDD200417000 /* ShopCollectionViewCell.swift */; };
 		DF4BF0092796EA3800417000 /* ManagerGameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4BF0082796EA3800417000 /* ManagerGameCenter.swift */; };
 		DF4BF00B2797238800417000 /* EndGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4BF00A2797238800417000 /* EndGameView.swift */; };
+		DF4BF00E279729FE00417000 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF4BF00D279729FE00417000 /* GameKit.framework */; };
 		DF4DAA0C279094D400FA4367 /* ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DAA0B279094D400FA4367 /* ItemRepository.swift */; };
 		DF4DAA0F2790966700FA4367 /* IceCreamBall.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DAA0E2790966700FA4367 /* IceCreamBall.swift */; };
 		DFD26683278F1B84006B2551 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD26682278F1B84006B2551 /* AppDelegate.swift */; };
@@ -35,6 +36,7 @@
 		DF4BF0032795CDD200417000 /* ShopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollectionViewCell.swift; sourceTree = "<group>"; };
 		DF4BF0082796EA3800417000 /* ManagerGameCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerGameCenter.swift; sourceTree = "<group>"; };
 		DF4BF00A2797238800417000 /* EndGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGameView.swift; sourceTree = "<group>"; };
+		DF4BF00D279729FE00417000 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		DF4DAA0B279094D400FA4367 /* ItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepository.swift; sourceTree = "<group>"; };
 		DF4DAA0E2790966700FA4367 /* IceCreamBall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IceCreamBall.swift; sourceTree = "<group>"; };
 		DFD2667F278F1B84006B2551 /* CreamTower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CreamTower.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF4BF00E279729FE00417000 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +89,14 @@
 			path = "Game Center";
 			sourceTree = "<group>";
 		};
+		DF4BF00C279729FE00417000 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DF4BF00D279729FE00417000 /* GameKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DF4DAA0A279094BC00FA4367 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +119,7 @@
 			children = (
 				DFD26681278F1B84006B2551 /* CreamTower */,
 				DFD26680278F1B84006B2551 /* Products */,
+				DF4BF00C279729FE00417000 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -399,6 +411,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = gamekit;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -430,6 +443,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = gamekit;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

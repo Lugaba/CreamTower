@@ -268,6 +268,7 @@ class GameScene: SKScene {
             
             if score > highScore {
                 defaults.set(score, forKey: "HighScore")
+                ManagerGameCenter.setHighScore(score: self.score)
             }
             
             gameViewController.showEngGameView(score: score)
@@ -281,15 +282,17 @@ class GameScene: SKScene {
     // MARK: - Movimento
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
-        let location = touch.location(in: self)
-        
-        if location.x - 25 > 0 && location.x + 25 < frame.width {
-            casca.position = CGPoint(x: location.x, y: casca.position.y)
+        if self.isPaused == false {
+            guard let touch = touches.first else { return }
+            let location = touch.location(in: self)
             
-            for iceCreamBall in placed {
-                let ball = iceCreamBall.iceCreamBallNode
-                ball.position.x = casca.position.x
+            if location.x - 25 > 0 && location.x + 25 < frame.width {
+                casca.position = CGPoint(x: location.x, y: casca.position.y)
+                
+                for iceCreamBall in placed {
+                    let ball = iceCreamBall.iceCreamBallNode
+                    ball.position.x = casca.position.x
+                }
             }
         }
     }

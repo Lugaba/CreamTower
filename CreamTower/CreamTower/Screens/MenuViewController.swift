@@ -18,8 +18,18 @@ class MenuViewController: UIViewController {
         ManagerGameCenter.authenticateUser(from: self, label: UILabel())
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        ManagerGameCenter.showAvatarGameCenter(isVisible: true)
+    }
+    
     
     override var prefersStatusBarHidden: Bool { return true }
+    
+    
+    @IBAction func playGame(_ sender: Any) {
+        ManagerGameCenter.showAvatarGameCenter(isVisible: false)
+
+    }
     
     @IBAction func goToRank(_ sender: Any) {
         if (!ManagerGameCenter().toSpecificPage(from: self, to: .leaderboards)) {
