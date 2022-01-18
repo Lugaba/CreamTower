@@ -27,7 +27,7 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var money = 0
     
     var type: objectType = .flavor
-    var itemArray = [Flavor]()
+    var itemArray = [Item]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +49,7 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
         shopSegmented.setTitleTextAttributes(titleTextAttributes, for: .normal)
         
         var bought = 0
-        for i in FlavorRepository.shared.getAllFlavors() {
+        for i in ItemRepository.shared.getAllItems() {
             if i.type == "flavor" {
                 itemArray.append(i)
                 if i.isBought == true {
@@ -81,12 +81,13 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 typeStr = "cone"
             case 2:
                 type = .background
+                typeStr = "background"
             default:
                 type = .flavor
         }
         
         var bought = 0
-        for i in FlavorRepository.shared.getAllFlavors() {
+        for i in ItemRepository.shared.getAllItems() {
             if i.type == typeStr {
                 itemArray.append(i)
                 if i.isBought == true {
@@ -155,11 +156,11 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     }
                 }
             }
-            FlavorRepository.shared.saveContext()
+            ItemRepository.shared.saveContext()
         } else {
             if money > itemArray[indexPath.row].price {
                 itemArray[indexPath.row].isBought.toggle()
-                FlavorRepository.shared.saveContext()
+                ItemRepository.shared.saveContext()
                 money -= Int(itemArray[indexPath.row].price)
                 defaults.set(money, forKey: "Money")
             }

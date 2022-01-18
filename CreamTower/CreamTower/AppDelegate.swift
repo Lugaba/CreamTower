@@ -16,13 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        if  FlavorRepository.shared.getAllFlavors().count == 0 {
-            _ = FlavorRepository.shared.createFlavor(name: "Chocolate", price: 200, imageName: "chocolateBall", isBought: true, isSelected: true, type: "flavor")
-            _ = FlavorRepository.shared.createFlavor(name: "Life", price: 10, imageName: "lifeBall", isBought: false, isSelected: false, type: "flavor")
-            _ = FlavorRepository.shared.createFlavor(name: "Gold", price: 5, imageName: "goldBall", isBought: false, isSelected: false, type: "flavor")
-            _ = FlavorRepository.shared.createFlavor(name: "Yellow", price: 50, imageName: "YellowCasca", isBought: true, isSelected: true, type: "cone")
-            _ = FlavorRepository.shared.createFlavor(name: "Red", price: 50, imageName: "RedCasca", isBought: true, isSelected: false, type: "cone")
-            _ = FlavorRepository.shared.createFlavor(name: "aoba", price: 50, imageName: "YellowCasca", isBought: true, isSelected: false, type: "cone")
+        if  ItemRepository.shared.getAllItems().count == 0 {
+            _ = ItemRepository.shared.createItem(name: "Chocolate", price: 200, imageName: "chocolateBall", isBought: true, isSelected: true, type: "flavor")
+            _ = ItemRepository.shared.createItem(name: "Life", price: 10, imageName: "lifeBall", isBought: false, isSelected: false, type: "flavor")
+            _ = ItemRepository.shared.createItem(name: "Gold", price: 5, imageName: "goldBall", isBought: false, isSelected: false, type: "flavor")
+            _ = ItemRepository.shared.createItem(name: "Yellow", price: 50, imageName: "YellowCasca", isBought: true, isSelected: true, type: "cone")
+            _ = ItemRepository.shared.createItem(name: "Red", price: 50, imageName: "RedCasca", isBought: true, isSelected: false, type: "cone")
+            _ = ItemRepository.shared.createItem(name: "aoba", price: 50, imageName: "YellowCasca", isBought: true, isSelected: false, type: "cone")
+            _ = ItemRepository.shared.createItem(name: "Azul", price: 50, imageName: "backBlue", isBought: true, isSelected: true, type: "background")
         }
         
         return true

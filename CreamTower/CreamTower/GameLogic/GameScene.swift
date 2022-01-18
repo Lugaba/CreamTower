@@ -13,9 +13,13 @@ class GameScene: SKScene {
     var placed = [IceCreamBall]()
     var allBalls = [IceCreamBall]()
     var zpos: CGFloat = 1
-    var casca: SKSpriteNode = SKSpriteNode()
-    let nuvens = [SKSpriteNode(imageNamed: "nuvem"), SKSpriteNode(imageNamed: "nuvem"), SKSpriteNode(imageNamed: "nuvem"), SKSpriteNode(imageNamed: "nuvem")]
+    var casca: SKSpriteNode = SKSpriteNode(imageNamed: "MatrixCasca")
+    var background = SKSpriteNode(imageNamed: "backMatrix")
+
+    var nuvens = [SKSpriteNode]()
     let fundo: SKShapeNode = SKShapeNode()
+    
+    var matrix = true
         
     var hearts = [SKSpriteNode]()
     var lifes: Int = 3 {
@@ -60,29 +64,47 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         
         money = defaults.integer(forKey: "Money")
-        
-        
-        let background = SKSpriteNode(imageNamed: "backBlue")
-        background.position = CGPoint(x: scene!.size.width/2, y: scene!.size.height/2)
-        background.blendMode = .replace
-        background.zPosition = -5
-        addChild(background)
-        
-        for i in FlavorRepository.shared.getAllFlavors() {
+  
+        for i in ItemRepository.shared.getAllItems() {
             if i.type == "flavor" {
                 if i.isSelected == true {
                     if let imageName = i.imageName{
                         images.append(imageName)
+                        matrix = false
                     }
                 }
             } else if i.type == "cone" {
                 if i.isSelected == true {
                     if let imageName = i.imageName{
                         casca = SKSpriteNode(imageNamed: imageName)
+                        matrix = false
+                    }
+                }
+            } else {
+                if i.isSelected == true {
+                    if let imageName = i.imageName{
+                        background = SKSpriteNode(imageNamed: imageName)
+                        matrix = false
                     }
                 }
             }
         }
+        
+        background.position = CGPoint(x: scene!.size.width/2, y: scene!.size.height/2)
+        background.blendMode = .replace
+        background.zPosition = -5
+        addChild(background)
+        
+        if images.count == 0 {
+            images.append("matrixBall")
+        }
+        
+        if matrix == true {
+            nuvens = [SKSpriteNode(imageNamed: "nuvemMatrix"), SKSpriteNode(imageNamed: "nuvemMatrix"), SKSpriteNode(imageNamed: "nuvemMatrix"), SKSpriteNode(imageNamed: "nuvemMatrix")]
+        } else {
+            nuvens = [SKSpriteNode(imageNamed: "nuvem"), SKSpriteNode(imageNamed: "nuvem"), SKSpriteNode(imageNamed: "nuvem"), SKSpriteNode(imageNamed: "nuvem")]
+        }
+        
         images.append("badBall")
         
         scoreLabel.text = "0"
@@ -141,7 +163,7 @@ class GameScene: SKScene {
     // MARK: - Atualizar bolas queda e colisao
     override func update(_ currentTime: TimeInterval) {
         for i in nuvens {
-            i.position.x += 0.05
+            i.position.x += 0.1
         }
         if vivo == true {
             for iceCreamBall in allBalls {

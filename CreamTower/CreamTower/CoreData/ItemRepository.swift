@@ -1,15 +1,15 @@
 //
-//  ConeRepository.swift
+//  ItemRepository.swift
 //  CreamTower
 //
-//  Created by Luca Hummel on 17/01/22.
+//  Created by Luca Hummel on 13/01/22.
 //
 
 import Foundation
 import CoreData
 
-class ConeRepository {
-    static let shared: ConeRepository = ConeRepository()
+class ItemRepository {
+    static let shared: ItemRepository = ItemRepository()
     
     private init() {}
     
@@ -60,8 +60,8 @@ class ConeRepository {
     
     // MARK: - Core Data Getting support
     
-    func getAllCones() -> [Cone] {
-        let fr = NSFetchRequest<Cone>(entityName: "Cone")
+    func getAllItems() -> [Item] {
+        let fr = NSFetchRequest<Item>(entityName: "Item")
         do {
             return try self.persistentContainer.viewContext.fetch(fr)
         } catch {
@@ -72,23 +72,24 @@ class ConeRepository {
     
     // MARK: - Core Data Creating support
     
-    func createCone(name: String, price: Int32, imageName: String, isBought: Bool, isSelected: Bool) -> Cone {
-        let cone = Cone(context: self.persistentContainer.viewContext)
+    func createItem(name: String, price: Int32, imageName: String, isBought: Bool, isSelected: Bool, type: String) -> Item {
+        let item = Item(context: self.persistentContainer.viewContext)
         
-        cone.name = name
-        cone.price = price
-        cone.imageName = imageName
-        cone.isBought = isBought
-        cone.isSelected = isSelected
+        item.name = name
+        item.price = price
+        item.imageName = imageName
+        item.isBought = isBought
+        item.isSelected = isSelected
+        item.type = type
         
         self.saveContext()
-        return cone
+        return item
     }
     
     // MARK: - Core Data deleting support
     
-    func deleteCone(cone: Cone) {
-        self.persistentContainer.viewContext.delete(cone)
+    func deleteItem(item: Item) {
+        self.persistentContainer.viewContext.delete(item)
         self.saveContext()
     }
 }
