@@ -107,11 +107,13 @@ class GameScene: SKScene {
         
         if matrix == true {
             nuvens = [SKSpriteNode(imageNamed: "nuvemMatrix"), SKSpriteNode(imageNamed: "nuvemMatrix"), SKSpriteNode(imageNamed: "nuvemMatrix"), SKSpriteNode(imageNamed: "nuvemMatrix")]
+            images.append("matrixBadBall")
         } else {
             nuvens = [SKSpriteNode(imageNamed: "nuvem"), SKSpriteNode(imageNamed: "nuvem"), SKSpriteNode(imageNamed: "nuvem"), SKSpriteNode(imageNamed: "nuvem")]
+            images.append("badBall")
         }
         
-        images.append("badBall")
+        
         
         pauseButton.size = CGSize(width: 36, height: 54)
         pauseButton.position = CGPoint(x: 40, y: scene!.size.height-55)
@@ -298,13 +300,15 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
-        let location = touch.location(in: self)
-        let objects = nodes(at: location)
+        if vivo {
+            guard let touch = touches.first else { return }
+            let location = touch.location(in: self)
+            let objects = nodes(at: location)
 
-        if objects.contains(pauseButton) {
-            self.isPaused.toggle()
-            gameViewController.pauseGame(score: score)
+            if objects.contains(pauseButton) {
+                self.isPaused.toggle()
+                gameViewController.pauseGame(score: score)
+            }
         }
     }
     
@@ -313,7 +317,7 @@ class GameScene: SKScene {
         if vivo {
             images.shuffle()
             let iceBall = IceCreamBall(image: images[0], velY: velocidade)
-            if iceBall.image == "badBall" {
+            if iceBall.image == "badBall" ||  iceBall.image == "matrixBadBall" {
                 iceBall.iceCreamBallNode.name = "badBall"
             } else {
                 iceBall.iceCreamBallNode.name = "iceBall"

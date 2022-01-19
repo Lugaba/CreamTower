@@ -246,6 +246,7 @@
                                     <backgroundConfiguration key="background" image="ShopButton"/>
                                 </buttonConfiguration>
                                 <connections>
+                                    <action selector="goToShop:" destination="5MV-kD-mhp" eventType="touchUpInside" id="il4-uV-4cp"/>
                                     <segue destination="301-wY-oWg" kind="show" id="rg3-gw-qtp"/>
                                 </connections>
                             </button>

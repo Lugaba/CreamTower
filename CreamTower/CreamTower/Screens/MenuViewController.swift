@@ -31,6 +31,10 @@ class MenuViewController: UIViewController {
 
     }
     
+    @IBAction func goToShop(_ sender: Any) {
+        ManagerGameCenter.showAvatarGameCenter(isVisible: false)
+    }
+    
     @IBAction func goToRank(_ sender: Any) {
         if (!ManagerGameCenter().toSpecificPage(from: self, to: .leaderboards)) {
             print("Not connected")

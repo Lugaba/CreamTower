@@ -40,4 +40,13 @@ public var itemsData: [ItemEntity] = [
     ItemEntity(name: "Pink", price: 500, imageName: "backPink", isBought: false, isSelected: false, type: objectType.background.rawValue),
     ItemEntity(name: "Purple", price: 750, imageName: "backPurple", isBought: false, isSelected: false, type: objectType.background.rawValue),
     ItemEntity(name: "Yellow", price: 750, imageName: "backYellow", isBought: false, isSelected: false, type: objectType.background.rawValue),
+    
+    ItemEntity(name: "Gold", price: 10000, imageName: "goldCone", isBought: false, isSelected: false, type: objectType.cone.rawValue),
+    
+    ItemEntity(name: "Neapolitan", price: 600, imageName: "neapolitanBall", isBought: false, isSelected: false, type: objectType.flavor.rawValue),
+    ItemEntity(name: "Neymar", price: 10401, imageName: "neymarBall", isBought: false, isSelected: false, type: objectType.flavor.rawValue),
+    ItemEntity(name: "Rainbow", price: 2000, imageName: "rainbowBall", isBought: false, isSelected: false, type: objectType.flavor.rawValue),
+    ItemEntity(name: "Brazil", price: 1000, imageName: "brazilBall", isBought: false, isSelected: false, type: objectType.flavor.rawValue),
+    ItemEntity(name: "Dalmatian", price: 2000, imageName: "dalmatianBall", isBought: false, isSelected: false, type: objectType.flavor.rawValue),
+    
 ]
