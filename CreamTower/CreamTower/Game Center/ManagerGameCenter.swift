@@ -9,6 +9,7 @@ import GameKit
 
 
 class ManagerGameCenter: GKGameCenterViewController, GKGameCenterControllerDelegate {
+    
     static func authenticateUser(from:UIViewController, label:UILabel) -> Void {
         GKLocalPlayer.local.authenticateHandler = { vc, error in
             if (vc == nil && error == nil) {
@@ -32,13 +33,13 @@ class ManagerGameCenter: GKGameCenterViewController, GKGameCenterControllerDeleg
     
     static func setHighScore(score:Int) -> Void {
         if (GKLocalPlayer.local.isAuthenticated) {
-            GKLeaderboard.submitScore(score, context: 0, player: GKLocalPlayer.local, leaderboardIDs: ["lbHighScore"], completionHandler: {error in} )
+            GKLeaderboard.submitScore(score, context: 0, player: GKLocalPlayer.local, leaderboardIDs: ["lucaHummel.CreamTower.Scores"], completionHandler: {error in} )
         }
     }
     
     static func getHighScoreFromLeadboard(label:UILabel) -> Void {
         if (GKLocalPlayer.local.isAuthenticated) {
-            GKLeaderboard.loadLeaderboards(IDs: ["lbHighScore"]) { leaderboards, _ in
+            GKLeaderboard.loadLeaderboards(IDs: ["lucaHummel.CreamTower.Scores"]) { leaderboards, _ in
                 leaderboards?[0].loadEntries(for: [GKLocalPlayer.local], timeScope: .allTime) {
                     player, _, _ in
                     UserDefaults.standard.set(player?.score, forKey: "HighScore")
