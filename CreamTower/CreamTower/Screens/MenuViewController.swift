@@ -12,14 +12,35 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        navigationController?.isNavigationBarHidden = true
         // Do any additional setup after loading the view.
+        
+        ManagerGameCenter.authenticateUser(from: self, label: UILabel())
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        ManagerGameCenter.showAvatarGameCenter(isVisible: true)
     }
     
     
     override var prefersStatusBarHidden: Bool { return true }
     
+    
+    @IBAction func playGame(_ sender: Any) {
+        ManagerGameCenter.showAvatarGameCenter(isVisible: false)
 
+    }
+    
+    @IBAction func goToShop(_ sender: Any) {
+        ManagerGameCenter.showAvatarGameCenter(isVisible: false)
+    }
+    
+    @IBAction func goToRank(_ sender: Any) {
+        if (!ManagerGameCenter().toSpecificPage(from: self, to: .leaderboards)) {
+            print("Not connected")
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

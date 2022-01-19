@@ -1,5 +1,5 @@
 //
-//  FlavorRepository.swift
+//  ItemRepository.swift
 //  CreamTower
 //
 //  Created by Luca Hummel on 13/01/22.
@@ -8,8 +8,8 @@
 import Foundation
 import CoreData
 
-class FlavorRepository {
-    static let shared: FlavorRepository = FlavorRepository()
+class ItemRepository {
+    static let shared: ItemRepository = ItemRepository()
     
     private init() {}
     
@@ -60,8 +60,8 @@ class FlavorRepository {
     
     // MARK: - Core Data Getting support
     
-    func getAllFlavors() -> [Flavor] {
-        let fr = NSFetchRequest<Flavor>(entityName: "Flavor")
+    func getAllItems() -> [Item] {
+        let fr = NSFetchRequest<Item>(entityName: "Item")
         do {
             return try self.persistentContainer.viewContext.fetch(fr)
         } catch {
@@ -72,23 +72,24 @@ class FlavorRepository {
     
     // MARK: - Core Data Creating support
     
-    func createFlavor(name: String, price: Double, imageName: String, isBought: Bool, isSelected: Bool) -> Flavor {
-        let flavor = Flavor(context: self.persistentContainer.viewContext)
+    func createItem(name: String, price: Int32, imageName: String, isBought: Bool, isSelected: Bool, type: String) -> Item {
+        let item = Item(context: self.persistentContainer.viewContext)
         
-        flavor.name = name
-        flavor.price = price
-        flavor.imageName = imageName
-        flavor.isBought = isBought
-        flavor.isSelected = isSelected
+        item.name = name
+        item.price = price
+        item.imageName = imageName
+        item.isBought = isBought
+        item.isSelected = isSelected
+        item.type = type
         
         self.saveContext()
-        return flavor
+        return item
     }
     
     // MARK: - Core Data deleting support
     
-    func deleteFlavor(flavor: Flavor) {
-        self.persistentContainer.viewContext.delete(flavor)
+    func deleteItem(item: Item) {
+        self.persistentContainer.viewContext.delete(item)
         self.saveContext()
     }
 }

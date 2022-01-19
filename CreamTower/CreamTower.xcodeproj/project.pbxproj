@@ -10,7 +10,14 @@
 		DF0736AC27906F3F006674C1 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DF0736AA27906F3F006674C1 /* Model.xcdatamodeld */; };
 		DF0736AE27906FD9006674C1 /* RankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0736AD27906FD9006674C1 /* RankViewController.swift */; };
 		DF0736B027907002006674C1 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0736AF27907002006674C1 /* ShopViewController.swift */; };
-		DF4DAA0C279094D400FA4367 /* FlavorRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DAA0B279094D400FA4367 /* FlavorRepository.swift */; };
+		DF4BEFFD2791E0AC00417000 /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4BEFFC2791E0AC00417000 /* PauseView.swift */; };
+		DF4BF0042795CDD200417000 /* ShopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4BF0032795CDD200417000 /* ShopCollectionViewCell.swift */; };
+		DF4BF0092796EA3800417000 /* ManagerGameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4BF0082796EA3800417000 /* ManagerGameCenter.swift */; };
+		DF4BF00B2797238800417000 /* EndGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4BF00A2797238800417000 /* EndGameView.swift */; };
+		DF4BF00E279729FE00417000 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF4BF00D279729FE00417000 /* GameKit.framework */; };
+		DF4BF0102797326E00417000 /* GlobalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4BF00F2797326E00417000 /* GlobalData.swift */; };
+		DF4BF01327973B5F00417000 /* ItemEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4BF01227973B5F00417000 /* ItemEntity.swift */; };
+		DF4DAA0C279094D400FA4367 /* ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DAA0B279094D400FA4367 /* ItemRepository.swift */; };
 		DF4DAA0F2790966700FA4367 /* IceCreamBall.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DAA0E2790966700FA4367 /* IceCreamBall.swift */; };
 		DFD26683278F1B84006B2551 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD26682278F1B84006B2551 /* AppDelegate.swift */; };
 		DFD26685278F1B84006B2551 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DFD26684278F1B84006B2551 /* GameScene.sks */; };
@@ -27,7 +34,14 @@
 		DF0736AB27906F3F006674C1 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		DF0736AD27906FD9006674C1 /* RankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankViewController.swift; sourceTree = "<group>"; };
 		DF0736AF27907002006674C1 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
-		DF4DAA0B279094D400FA4367 /* FlavorRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlavorRepository.swift; sourceTree = "<group>"; };
+		DF4BEFFC2791E0AC00417000 /* PauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseView.swift; sourceTree = "<group>"; };
+		DF4BF0032795CDD200417000 /* ShopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollectionViewCell.swift; sourceTree = "<group>"; };
+		DF4BF0082796EA3800417000 /* ManagerGameCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerGameCenter.swift; sourceTree = "<group>"; };
+		DF4BF00A2797238800417000 /* EndGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGameView.swift; sourceTree = "<group>"; };
+		DF4BF00D279729FE00417000 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		DF4BF00F2797326E00417000 /* GlobalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalData.swift; sourceTree = "<group>"; };
+		DF4BF01227973B5F00417000 /* ItemEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemEntity.swift; sourceTree = "<group>"; };
+		DF4DAA0B279094D400FA4367 /* ItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepository.swift; sourceTree = "<group>"; };
 		DF4DAA0E2790966700FA4367 /* IceCreamBall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IceCreamBall.swift; sourceTree = "<group>"; };
 		DFD2667F278F1B84006B2551 /* CreamTower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CreamTower.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFD26682278F1B84006B2551 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -47,16 +61,58 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF4BF00E279729FE00417000 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF4BEFFB2791E08400417000 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DF4BEFFC2791E0AC00417000 /* PauseView.swift */,
+				DF4BF00A2797238800417000 /* EndGameView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DF4BF0022795CD9800417000 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DF4BF0032795CDD200417000 /* ShopCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		DF4BF0072796EA2300417000 /* Game Center */ = {
+			isa = PBXGroup;
+			children = (
+				DF4BF0082796EA3800417000 /* ManagerGameCenter.swift */,
+			);
+			path = "Game Center";
+			sourceTree = "<group>";
+		};
+		DF4BF00C279729FE00417000 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DF4BF00D279729FE00417000 /* GameKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DF4BF01127973AA100417000 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				DF4BF01227973B5F00417000 /* ItemEntity.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		DF4DAA0A279094BC00FA4367 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				DF4DAA0B279094D400FA4367 /* FlavorRepository.swift */,
+				DF4DAA0B279094D400FA4367 /* ItemRepository.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -75,6 +131,7 @@
 			children = (
 				DFD26681278F1B84006B2551 /* CreamTower */,
 				DFD26680278F1B84006B2551 /* Products */,
+				DF4BF00C279729FE00417000 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,6 +146,10 @@
 		DFD26681278F1B84006B2551 /* CreamTower */ = {
 			isa = PBXGroup;
 			children = (
+				DF4BF01127973AA100417000 /* Classes */,
+				DF4BF0072796EA2300417000 /* Game Center */,
+				DF4BF0022795CD9800417000 /* Cells */,
+				DF4BEFFB2791E08400417000 /* Views */,
 				DF4DAA0D2790964800FA4367 /* GameLogic */,
 				DF4DAA0A279094BC00FA4367 /* CoreData */,
 				DFF599592790650F00BFD833 /* Info.plist */,
@@ -100,6 +161,7 @@
 				DFD2668F278F1B85006B2551 /* Assets.xcassets */,
 				DFD26691278F1B85006B2551 /* LaunchScreen.storyboard */,
 				DF0736AA27906F3F006674C1 /* Model.xcdatamodeld */,
+				DF4BF00F2797326E00417000 /* GlobalData.swift */,
 			);
 			path = CreamTower;
 			sourceTree = "<group>";
@@ -197,12 +259,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFD26689278F1B84006B2551 /* GameScene.swift in Sources */,
+				DF4BF00B2797238800417000 /* EndGameView.swift in Sources */,
 				DFD2668B278F1B84006B2551 /* GameViewController.swift in Sources */,
 				DF0736AE27906FD9006674C1 /* RankViewController.swift in Sources */,
+				DF4BF0102797326E00417000 /* GlobalData.swift in Sources */,
 				DF4DAA0F2790966700FA4367 /* IceCreamBall.swift in Sources */,
-				DF4DAA0C279094D400FA4367 /* FlavorRepository.swift in Sources */,
+				DF4BF0092796EA3800417000 /* ManagerGameCenter.swift in Sources */,
+				DF4DAA0C279094D400FA4367 /* ItemRepository.swift in Sources */,
+				DF4BF0042795CDD200417000 /* ShopCollectionViewCell.swift in Sources */,
 				DF0736AC27906F3F006674C1 /* Model.xcdatamodeld in Sources */,
 				DFD26683278F1B84006B2551 /* AppDelegate.swift in Sources */,
+				DF4BEFFD2791E0AC00417000 /* PauseView.swift in Sources */,
+				DF4BF01327973B5F00417000 /* ItemEntity.swift in Sources */,
 				DF0736B027907002006674C1 /* ShopViewController.swift in Sources */,
 				DFF599552790618200BFD833 /* MenuViewController.swift in Sources */,
 			);
@@ -359,10 +427,11 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = gamekit;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -390,10 +459,11 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = gamekit;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -16,6 +16,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        if ItemRepository.shared.getAllItems().count == 0 {
+
+            for item in itemsData {
+                _ = ItemRepository.shared.createItem(name: item.name, price: item.price, imageName: item.imageName, isBought: item.isBought, isSelected: item.isSelected, type: item.type)
+            }
+        } else if ItemRepository.shared.getAllItems().count < itemsData.count {
+            for index in ItemRepository.shared.getAllItems().count..<itemsData.count {
+                _ = ItemRepository.shared.createItem(name: itemsData[index].name, price: itemsData[index].price, imageName: itemsData[index].imageName, isBought: itemsData[index].isBought, isSelected: itemsData[index].isSelected, type: itemsData[index].type)
+            }
+        } else {
+            print("CoreData up to date")
+        }
         
         return true
     }
