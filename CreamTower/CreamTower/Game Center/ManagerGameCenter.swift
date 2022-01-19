@@ -33,13 +33,13 @@ class ManagerGameCenter: GKGameCenterViewController, GKGameCenterControllerDeleg
     
     static func setHighScore(score:Int) -> Void {
         if (GKLocalPlayer.local.isAuthenticated) {
-            GKLeaderboard.submitScore(score, context: 0, player: GKLocalPlayer.local, leaderboardIDs: ["lucaHummel.CreamTower.Scores"], completionHandler: {error in} )
+            GKLeaderboard.submitScore(score, context: 0, player: GKLocalPlayer.local, leaderboardIDs: ["testesorvete1"], completionHandler: {error in} )
         }
     }
     
     static func getHighScoreFromLeadboard(label:UILabel) -> Void {
         if (GKLocalPlayer.local.isAuthenticated) {
-            GKLeaderboard.loadLeaderboards(IDs: ["lucaHummel.CreamTower.Scores"]) { leaderboards, _ in
+            GKLeaderboard.loadLeaderboards(IDs: ["testesorvete1"]) { leaderboards, _ in
                 leaderboards?[0].loadEntries(for: [GKLocalPlayer.local], timeScope: .allTime) {
                     player, _, _ in
                     UserDefaults.standard.set(player?.score, forKey: "HighScore")
@@ -51,9 +51,12 @@ class ManagerGameCenter: GKGameCenterViewController, GKGameCenterControllerDeleg
             
     public func toSpecificPage(from:UIViewController, to:GKGameCenterViewControllerState) -> Bool {
         if (GKLocalPlayer.local.isAuthenticated) {
-            let vc = GKGameCenterViewController(state: to)
-            vc.gameCenterDelegate = self
-            from.present(vc, animated: true, completion: nil)
+            let viewController = GKGameCenterViewController(
+                            leaderboardID: "testesorvete1",
+                            playerScope: .global,
+                            timeScope: .allTime)
+            viewController.gameCenterDelegate = self
+            from.present(viewController, animated: true, completion: nil)
             return true
         }; return false
     }
