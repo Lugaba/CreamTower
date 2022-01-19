@@ -54,7 +54,7 @@ class ManagerGameCenter: GKGameCenterViewController, GKGameCenterControllerDeleg
             let viewController = GKGameCenterViewController(
                             leaderboardID: "testesorvete1",
                             playerScope: .global,
-                            timeScope: .allTime)
+                            timeScope: .allTime) 
             viewController.gameCenterDelegate = self
             from.present(viewController, animated: true, completion: nil)
             return true

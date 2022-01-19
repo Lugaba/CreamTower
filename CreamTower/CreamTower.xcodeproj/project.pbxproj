@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		DF0736AC27906F3F006674C1 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DF0736AA27906F3F006674C1 /* Model.xcdatamodeld */; };
-		DF0736AE27906FD9006674C1 /* RankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0736AD27906FD9006674C1 /* RankViewController.swift */; };
 		DF0736B027907002006674C1 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0736AF27907002006674C1 /* ShopViewController.swift */; };
 		DF4BEFFD2791E0AC00417000 /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4BEFFC2791E0AC00417000 /* PauseView.swift */; };
 		DF4BF0042795CDD200417000 /* ShopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4BF0032795CDD200417000 /* ShopCollectionViewCell.swift */; };
@@ -32,7 +31,6 @@
 
 /* Begin PBXFileReference section */
 		DF0736AB27906F3F006674C1 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		DF0736AD27906FD9006674C1 /* RankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankViewController.swift; sourceTree = "<group>"; };
 		DF0736AF27907002006674C1 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		DF4BEFFC2791E0AC00417000 /* PauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseView.swift; sourceTree = "<group>"; };
 		DF4BF0032795CDD200417000 /* ShopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -171,7 +169,6 @@
 			children = (
 				DFD2668A278F1B84006B2551 /* GameViewController.swift */,
 				DFF599542790618200BFD833 /* MenuViewController.swift */,
-				DF0736AD27906FD9006674C1 /* RankViewController.swift */,
 				DF0736AF27907002006674C1 /* ShopViewController.swift */,
 			);
 			path = Screens;
@@ -261,7 +258,6 @@
 				DFD26689278F1B84006B2551 /* GameScene.swift in Sources */,
 				DF4BF00B2797238800417000 /* EndGameView.swift in Sources */,
 				DFD2668B278F1B84006B2551 /* GameViewController.swift in Sources */,
-				DF0736AE27906FD9006674C1 /* RankViewController.swift in Sources */,
 				DF4BF0102797326E00417000 /* GlobalData.swift in Sources */,
 				DF4DAA0F2790966700FA4367 /* IceCreamBall.swift in Sources */,
 				DF4BF0092796EA3800417000 /* ManagerGameCenter.swift in Sources */,

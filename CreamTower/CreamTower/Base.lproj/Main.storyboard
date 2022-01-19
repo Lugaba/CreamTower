@@ -289,22 +289,6 @@
             </objects>
             <point key="canvasLocation" x="318.84057971014494" y="115.84821428571428"/>
         </scene>
-        <!--Rank View Controller-->
-        <scene sceneID="ltt-ON-Urj">
-            <objects>
-                <viewController id="3TT-54-PiJ" customClass="RankViewController" customModule="CreamTower" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="WTm-AL-pK1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="1pA-xD-ufj"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="KBw-Zd-YWZ"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Reh-p4-qS8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="319" y="809"/>
-        </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
