@@ -379,7 +379,6 @@ class GameScene: SKScene {
                 arrayImages.append(arrayImages[Int.random(in: 0...arrayImages.count-1)])
             }
         }
-        print(arrayImages)
     }
     
 }
