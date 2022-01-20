@@ -40,7 +40,7 @@ class GameScene: SKScene {
     }
     
     var vivo = true
-    var velocidade: CGFloat = 3
+    var velocidade: CGFloat = 6
     var waitTime = 1.5
     
     var scoreLabel = SKLabelNode()
@@ -49,11 +49,19 @@ class GameScene: SKScene {
     
     var score = 0 {
         didSet {
-            if score % 20 == 0 && waitTime > 0.5{
-                waitTime -= 0.5
-            } else if score % 10 == 0 && velocidade < 30{
-                velocidade += 3
+            if score % 25 == 0 && waitTime > 0.5 {
+                waitTime -= 0.1
+            } else {
+                if score % 13 == 0 && velocidade < 21 {
+                    velocidade += 1
+                }
             }
+            
+            //            if score % 20 == 0 && waitTime > 0.5{
+            //                waitTime -= 0.5
+            //            } else if score % 10 == 0 && velocidade < 30{
+            //                velocidade += 3
+            //            }
             scoreLabel.text = "\(score)"
             money += 1
             moneyLabel.text = "\(money)"
@@ -105,12 +113,12 @@ class GameScene: SKScene {
             images.append("matrixBall")
         }
         
+        fillArray(arrayImages: &images)
+        
         if matrix == true {
             nuvens = [SKSpriteNode(imageNamed: "nuvemMatrix"), SKSpriteNode(imageNamed: "nuvemMatrix"), SKSpriteNode(imageNamed: "nuvemMatrix"), SKSpriteNode(imageNamed: "nuvemMatrix")]
-            images.append("matrixBadBall")
         } else {
             nuvens = [SKSpriteNode(imageNamed: "nuvem"), SKSpriteNode(imageNamed: "nuvem"), SKSpriteNode(imageNamed: "nuvem"), SKSpriteNode(imageNamed: "nuvem")]
-            images.append("badBall")
         }
         
         
@@ -304,7 +312,7 @@ class GameScene: SKScene {
             guard let touch = touches.first else { return }
             let location = touch.location(in: self)
             let objects = nodes(at: location)
-
+            
             if objects.contains(pauseButton) {
                 self.isPaused.toggle()
                 gameViewController.pauseGame(score: score)
@@ -350,6 +358,28 @@ class GameScene: SKScene {
     
     func cancelActionDropBall() {
         removeAction(forKey: "aKey")
+    }
+    
+    func fillArray(arrayImages: inout [String]) {
+        while true {
+            if arrayImages.count % 4 == 0 {
+                while true {
+                    if matrix == true {
+                        arrayImages.append("matrixBadBall")
+                    } else {
+                        arrayImages.append("badBall")
+                    }
+                    
+                    if arrayImages.count % 5 == 0 {
+                        break
+                    }
+                }
+                break
+            } else {
+                arrayImages.append(arrayImages[Int.random(in: 0...arrayImages.count-1)])
+            }
+        }
+        print(arrayImages)
     }
     
 }

@@ -15,7 +15,7 @@ class MenuViewController: UIViewController {
         navigationController?.isNavigationBarHidden = true
         // Do any additional setup after loading the view.
         
-        ManagerGameCenter.authenticateUser(from: self, label: UILabel())
+        ManagerGameCenter.authenticateUser(from: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {

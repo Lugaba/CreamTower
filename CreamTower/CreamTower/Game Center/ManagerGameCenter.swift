@@ -10,11 +10,13 @@ import GameKit
 
 class ManagerGameCenter: GKGameCenterViewController, GKGameCenterControllerDelegate {
     
-    static func authenticateUser(from:UIViewController, label:UILabel) -> Void {
+    static func authenticateUser(from:UIViewController) -> Void {
         GKLocalPlayer.local.authenticateHandler = { vc, error in
+            print(vc)
+            print(error)
             if (vc == nil && error == nil) {
                 self.showAvatarGameCenter(isVisible: true)
-                self.getHighScoreFromLeadboard(label:label)
+                //self.getHighScoreFromLeadboard()
                 return
             }
             guard error == nil else { return }
@@ -37,17 +39,17 @@ class ManagerGameCenter: GKGameCenterViewController, GKGameCenterControllerDeleg
         }
     }
     
-    static func getHighScoreFromLeadboard(label:UILabel) -> Void {
-        if (GKLocalPlayer.local.isAuthenticated) {
-            GKLeaderboard.loadLeaderboards(IDs: ["testesorvete1"]) { leaderboards, _ in
-                leaderboards?[0].loadEntries(for: [GKLocalPlayer.local], timeScope: .allTime) {
-                    player, _, _ in
-                    UserDefaults.standard.set(player?.score, forKey: "HighScore")
-                    print(String(UserDefaults.standard.integer(forKey: "HighScore")))
-                }
-            }
-        }
-    }
+//    static func getHighScoreFromLeadboard(label:UILabel) -> Void {
+//        if (GKLocalPlayer.local.isAuthenticated) {
+//            GKLeaderboard.loadLeaderboards(IDs: ["testesorvete1"]) { leaderboards, _ in
+//                leaderboards?[0].loadEntries(for: [GKLocalPlayer.local], timeScope: .allTime) {
+//                    player, _, _ in
+//                    UserDefaults.standard.set(player?.score, forKey: "HighScore")
+//                    print(String(UserDefaults.standard.integer(forKey: "HighScore")))
+//                }
+//            }
+//        }
+//    }
             
     public func toSpecificPage(from:UIViewController, to:GKGameCenterViewControllerState) -> Bool {
         if (GKLocalPlayer.local.isAuthenticated) {

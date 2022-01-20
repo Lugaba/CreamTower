@@ -42,16 +42,7 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         shopSegmented.setTitleTextAttributes(titleTextAttributes, for: .normal)
         
-        var bought = 0
-        for i in ItemRepository.shared.getAllItems() {
-            if i.type == objectType.flavor.rawValue {
-                itemArray.append(i)
-                if i.isBought == true {
-                    bought += 1
-                }
-            }
-        }
-        unitsLabel.text = "\(bought) of \(itemArray.count)"
+        unitsLabel.text = "\(getNumberBought(type: type, itemArray: &itemArray)) of \(itemArray.count)"
         unitsLabel.font = UIFont(name: "Shrikhand-Regular", size: 20)
         unitsLabel.textColor = UIColor(named: "grayApp")
         
@@ -64,7 +55,6 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     @IBAction func suitDidChange(_ sender: UISegmentedControl) {
-        itemArray = []
         switch sender.selectedSegmentIndex {
             case 0:
                 type = .flavor
@@ -76,17 +66,9 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 type = .flavor
         }
         
-        var bought = 0
-        for i in ItemRepository.shared.getAllItems() {
-            if i.type == type.rawValue {
-                itemArray.append(i)
-                if i.isBought == true {
-                    bought += 1
-                }
-            }
-        }
-        unitsLabel.text = "\(bought) of \(itemArray.count)"
         
+        unitsLabel.text = "\(getNumberBought(type: type, itemArray: &itemArray)) of \(itemArray.count)"
+
         shopCollection.reloadData()
     }
     
@@ -153,6 +135,13 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 ItemRepository.shared.saveContext()
                 money -= Int(itemArray[indexPath.row].price)
                 defaults.set(money, forKey: "Money")
+                defaults.synchronize()
+                moneyLabel.text = "\(money)"
+                unitsLabel.text = "\(getNumberBought(type: type, itemArray: &itemArray)) of \(itemArray.count)"
+            } else {
+                let ac = UIAlertController(title: "You do not have enough CreamGold", message: nil, preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(ac, animated: true)
             }
             
         }
@@ -160,7 +149,19 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     
-    
+    func getNumberBought(type: objectType, itemArray: inout [Item]) -> Int {
+        itemArray = []
+        var bought = 0
+        for i in ItemRepository.shared.getAllItems() {
+            if i.type == type.rawValue {
+                itemArray.append(i)
+                if i.isBought == true {
+                    bought += 1
+                }
+            }
+        }
+        return bought
+    }
     
     override var prefersStatusBarHidden: Bool {
         return true
