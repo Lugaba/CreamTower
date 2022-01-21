@@ -29,7 +29,6 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        callAd()
         money = defaults.integer(forKey: "Money")
         
         navigationController?.isNavigationBarHidden = true
@@ -192,7 +191,7 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
             ad.present(fromRootViewController: self) {
                 let reward = ad.adReward
                 print("Reward received with currency \(reward.amount), amount \(reward.amount.doubleValue)")
-                self.earnCoins(value: NSInteger(truncating: reward.amount))
+                self.earnCoins(value: 100)
                 // TODO: Reward the user.
             }
         } else {
@@ -210,9 +209,9 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func earnCoins(value: NSInteger) {
-        print(money)
         money += value
-        print(money)
+        defaults.set(money, forKey: "Money")
+        moneyLabel.text = "\(money)"
     }
     
     // MARK: GADFullScreenContentDelegate
@@ -222,6 +221,7 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         print("Rewarded ad dismissed.")
+        self.callAd()
     }
     
     func ad(
@@ -230,11 +230,11 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     ) {
         print("Rewarded ad failed to present with error: \(error.localizedDescription).")
         let alert = UIAlertController(
-            title: "Rewarded ad failed to present",
-            message: "The reward ad could not be presented.",
+            title: "Wait a minute!",
+            message: "We do not have ads to show right now!",
             preferredStyle: .alert)
         let alertAction = UIAlertAction(
-            title: "Drat",
+            title: "OK",
             style: .cancel,
             handler: nil)
         alert.addAction(alertAction)

@@ -14,13 +14,13 @@
         <!--Shop-->
         <scene sceneID="eud-wP-Qg7">
             <objects>
-                <viewController id="301-wY-oWg" customClass="ShopViewController" customModule="CreamTower" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="shopScreen" id="301-wY-oWg" customClass="ShopViewController" customModule="CreamTower" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5go-1p-Yq7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLD-Dk-Da7">
-                                <rect key="frame" x="24" y="88" width="27" height="34"/>
+                                <rect key="frame" x="24" y="44" width="27" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="27" id="aGF-1P-Hiq"/>
                                     <constraint firstAttribute="height" constant="34" id="k2m-xW-jwx"/>
@@ -35,7 +35,7 @@
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gqg-Gb-D0e">
-                                <rect key="frame" x="16" y="204" width="382" height="32"/>
+                                <rect key="frame" x="16" y="160" width="382" height="32"/>
                                 <segments>
                                     <segment title="Flavors"/>
                                     <segment title="Cones"/>
@@ -47,7 +47,7 @@
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fJ-o6-61Z">
-                                <rect key="frame" x="186" y="243" width="42" height="30"/>
+                                <rect key="frame" x="186" y="199" width="42" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="yIj-MW-oMH"/>
                                 </constraints>
@@ -56,7 +56,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="T6K-dU-CBp">
-                                <rect key="frame" x="0.0" y="281" width="414" height="615"/>
+                                <rect key="frame" x="0.0" y="237" width="414" height="659"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="30" minimumInteritemSpacing="10" id="KF0-nx-MJV">
                                     <size key="itemSize" width="150" height="160"/>
@@ -137,7 +137,7 @@
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V75-kc-Nq4">
-                                <rect key="frame" x="300" y="95" width="42" height="20"/>
+                                <rect key="frame" x="300" y="51" width="42" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="ibz-N4-aio"/>
                                 </constraints>
@@ -146,7 +146,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I9Q-OB-O9z">
-                                <rect key="frame" x="24" y="130" width="40" height="66"/>
+                                <rect key="frame" x="24" y="86" width="40" height="66"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="66" id="XDx-Ao-WmH"/>
                                 </constraints>
@@ -160,18 +160,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="goldBall" translatesAutoresizingMaskIntoConstraints="NO" id="AN5-Lc-zcZ">
-                                <rect key="frame" x="350" y="95" width="20" height="20"/>
+                                <rect key="frame" x="350" y="51" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="e05-YJ-yTa"/>
                                     <constraint firstAttribute="height" constant="20" id="wz8-eT-HCE"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="glB-Yd-GgT">
-                                <rect key="frame" x="378" y="95" width="20" height="20"/>
+                                <rect key="frame" x="378" y="51" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="dRz-pr-hno"/>
                                     <constraint firstAttribute="width" constant="20" id="hKm-wT-prd"/>
                                 </constraints>
+                                <color key="tintColor" red="0.90461629629999996" green="0.43407627939999999" blue="0.67844921349999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title=" ">
                                     <backgroundConfiguration key="background" image="plus.circle.fill" catalog="system"/>
@@ -279,7 +280,6 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="goToShop:" destination="5MV-kD-mhp" eventType="touchUpInside" id="il4-uV-4cp"/>
-                                    <segue destination="301-wY-oWg" kind="show" id="rg3-gw-qtp"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWk-n8-QUe">

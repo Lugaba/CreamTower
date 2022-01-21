@@ -33,6 +33,10 @@ class MenuViewController: UIViewController {
     
     @IBAction func goToShop(_ sender: Any) {
         ManagerGameCenter.showAvatarGameCenter(isVisible: false)
+        if let vc = storyboard?.instantiateViewController(identifier: "shopScreen") as? ShopViewController {
+            vc.callAd()
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     @IBAction func goToRank(_ sender: Any) {
