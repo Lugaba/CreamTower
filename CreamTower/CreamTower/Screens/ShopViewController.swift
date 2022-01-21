@@ -133,7 +133,7 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
             ItemRepository.shared.saveContext()
         } else {
-            if money > itemArray[indexPath.row].price {
+            if money >= itemArray[indexPath.row].price {
                 itemArray[indexPath.row].isBought.toggle()
                 ItemRepository.shared.saveContext()
                 money -= Int(itemArray[indexPath.row].price)
