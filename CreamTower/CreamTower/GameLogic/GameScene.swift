@@ -40,31 +40,38 @@ class GameScene: SKScene {
     }
     
     var vivo = true
-    var velocidade: CGFloat = 6
-    var waitTime = 1.5
+    var velocidade: CGFloat = 3
+    var waitTime: Double = 1.25
     
     var scoreLabel = SKLabelNode()
     var moneyLabel = SKLabelNode()
     var money: Int = 0
     
+    let strokeTextAttributes = [
+      NSAttributedString.Key.strokeColor : UIColor(named: "grayApp"),
+      NSAttributedString.Key.foregroundColor : UIColor.white,
+      NSAttributedString.Key.strokeWidth : -1.0,
+      NSAttributedString.Key.font : UIFont(name: "Shrikhand-Regular", size: 40)]
+      as [NSAttributedString.Key : Any]
+    
+    let strokeTextAttributesMoney = [
+      NSAttributedString.Key.strokeColor : UIColor(named: "grayApp"),
+      NSAttributedString.Key.foregroundColor : UIColor.white,
+      NSAttributedString.Key.strokeWidth : -1.0,
+      NSAttributedString.Key.font : UIFont(name: "Shrikhand-Regular", size: 20)]
+      as [NSAttributedString.Key : Any]
+    
     var score = 0 {
         didSet {
-            if score % 25 == 0 && waitTime > 0.5 {
-                waitTime -= 0.1
-            } else {
-                if score % 13 == 0 && velocidade < 21 {
-                    velocidade += 1
-                }
+            if score % 10 == 0 && velocidade < 24  && waitTime > 0.5 {
+                velocidade += 1
+                waitTime -= 0.15
             }
             
-            //            if score % 20 == 0 && waitTime > 0.5{
-            //                waitTime -= 0.5
-            //            } else if score % 10 == 0 && velocidade < 30{
-            //                velocidade += 3
-            //            }
-            scoreLabel.text = "\(score)"
+            scoreLabel.attributedText = NSMutableAttributedString(string: "\(score)", attributes: strokeTextAttributes)
             money += 1
-            moneyLabel.text = "\(money)"
+            moneyLabel.attributedText = NSMutableAttributedString(string: "\(money)", attributes: strokeTextAttributesMoney)
+
         }
     }
     
@@ -127,10 +134,8 @@ class GameScene: SKScene {
         pauseButton.position = CGPoint(x: 40, y: scene!.size.height-55)
         addChild(pauseButton)
         
-        scoreLabel.text = "0"
+        scoreLabel.attributedText = NSMutableAttributedString(string: "\(score)", attributes: strokeTextAttributes)
         scoreLabel.position = CGPoint(x: scene!.size.width/2, y: scene!.size.height-70)
-        scoreLabel.fontName = "Shrikhand-Regular"
-        scoreLabel.fontSize = 40
         scoreLabel.zPosition = 1000
         addChild(scoreLabel)
         
@@ -157,11 +162,9 @@ class GameScene: SKScene {
             addChild(nuvens[i])
         }
         
-        moneyLabel.text = "\(money)"
+        moneyLabel.attributedText = NSMutableAttributedString(string: "\(money)", attributes: strokeTextAttributesMoney)
         moneyLabel.horizontalAlignmentMode = .right
         moneyLabel.position = CGPoint(x: scene!.size.width - 50, y: scene!.size.height - 65)
-        moneyLabel.fontName = "Shrikhand-Regular"
-        moneyLabel.fontSize = 20
         moneyLabel.zPosition = 1000
         addChild(moneyLabel)
         
