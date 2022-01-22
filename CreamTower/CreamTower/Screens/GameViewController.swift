@@ -46,14 +46,17 @@ class GameViewController: UIViewController {
         }
     }
     
+    
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
     
     func pauseGame(score: Int) {
         self.score = score
-        if currentGame?.isPaused == false {
+        if currentGame?.realPause == false {
             pauseView.removeFromSuperview()
+            currentGame?.action(forKey: "aKey")?.speed = 1
         } else {
 
             self.view.addSubview(self.pauseView)
@@ -62,10 +65,11 @@ class GameViewController: UIViewController {
             pauseView.setPointsText(score: score)
             pauseView.setHighPointsText(highScore: defaults.integer(forKey: "HighScore"))
         }
+        print(currentGame?.action(forKey: "aKey")?.speed)
     }
     
     @objc func pauseGameToggle() {
-        currentGame?.isPaused.toggle()
+        currentGame?.realPause.toggle()
         pauseGame(score: score)
     }
     

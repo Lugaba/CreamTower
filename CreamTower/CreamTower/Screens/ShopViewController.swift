@@ -54,6 +54,7 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     
     @IBAction func exitToMenu(_ sender: Any) {
+        print(defaults.integer(forKey: "Money"))
         navigationController?.popViewController(animated: true)
     }
     
@@ -190,8 +191,7 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if let ad = rewardedAd {
             ad.present(fromRootViewController: self) {
                 let reward = ad.adReward
-                print("Reward received with currency \(reward.amount), amount \(reward.amount.doubleValue)")
-                self.earnCoins(value: 100)
+                self.earnCoins(value: 50)
                 // TODO: Reward the user.
             }
         } else {
@@ -211,6 +211,7 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func earnCoins(value: NSInteger) {
         money += value
         defaults.set(money, forKey: "Money")
+        print(defaults.integer(forKey: "Money"))
         moneyLabel.text = "\(money)"
     }
     

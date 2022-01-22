@@ -219,22 +219,6 @@
             </objects>
             <point key="canvasLocation" x="318.84057971014494" y="-587.27678571428567"/>
         </scene>
-        <!--Video Ad View Controller-->
-        <scene sceneID="0ix-xk-5hb">
-            <objects>
-                <viewController id="KEh-8W-xcN" customClass="VideoAdViewController" customModule="CreamTower" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="MOy-Ap-PYf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="fdh-sq-anB"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="OPN-uf-y0R"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IfW-c3-Jfy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1275" y="-574"/>
-        </scene>
         <!--Menu View Controller-->
         <scene sceneID="QQK-Si-PTc">
             <objects>

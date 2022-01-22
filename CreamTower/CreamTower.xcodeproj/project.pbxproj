@@ -18,7 +18,6 @@
 		DF4BF01327973B5F00417000 /* ItemEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4BF01227973B5F00417000 /* ItemEntity.swift */; };
 		DF4DAA0C279094D400FA4367 /* ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DAA0B279094D400FA4367 /* ItemRepository.swift */; };
 		DF4DAA0F2790966700FA4367 /* IceCreamBall.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DAA0E2790966700FA4367 /* IceCreamBall.swift */; };
-		DFA7A2C3279B302300AFC3F9 /* VideoAdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA7A2C2279B302300AFC3F9 /* VideoAdViewController.swift */; };
 		DFD26683278F1B84006B2551 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD26682278F1B84006B2551 /* AppDelegate.swift */; };
 		DFD26685278F1B84006B2551 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DFD26684278F1B84006B2551 /* GameScene.sks */; };
 		DFD26689278F1B84006B2551 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD26688278F1B84006B2551 /* GameScene.swift */; };
@@ -46,7 +45,6 @@
 		DF4BF01227973B5F00417000 /* ItemEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemEntity.swift; sourceTree = "<group>"; };
 		DF4DAA0B279094D400FA4367 /* ItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepository.swift; sourceTree = "<group>"; };
 		DF4DAA0E2790966700FA4367 /* IceCreamBall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IceCreamBall.swift; sourceTree = "<group>"; };
-		DFA7A2C2279B302300AFC3F9 /* VideoAdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoAdViewController.swift; sourceTree = "<group>"; };
 		DFD2667F278F1B84006B2551 /* CreamTower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CreamTower.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFD26682278F1B84006B2551 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFD26684278F1B84006B2551 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -188,7 +186,6 @@
 				DFD2668A278F1B84006B2551 /* GameViewController.swift */,
 				DFF599542790618200BFD833 /* MenuViewController.swift */,
 				DF0736AF27907002006674C1 /* ShopViewController.swift */,
-				DFA7A2C2279B302300AFC3F9 /* VideoAdViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -322,7 +319,6 @@
 				DF4BF00B2797238800417000 /* EndGameView.swift in Sources */,
 				DFD2668B278F1B84006B2551 /* GameViewController.swift in Sources */,
 				DF4BF0102797326E00417000 /* GlobalData.swift in Sources */,
-				DFA7A2C3279B302300AFC3F9 /* VideoAdViewController.swift in Sources */,
 				DF4DAA0F2790966700FA4367 /* IceCreamBall.swift in Sources */,
 				DF4BF0092796EA3800417000 /* ManagerGameCenter.swift in Sources */,
 				DF4DAA0C279094D400FA4367 /* ItemRepository.swift in Sources */,

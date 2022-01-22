@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         
         if ItemRepository.shared.getAllItems().count == 0 {
-
+            UserDefaults.standard.set(0, forKey: "Money")
             for item in itemsData {
                 _ = ItemRepository.shared.createItem(name: item.name, price: item.price, imageName: item.imageName, isBought: item.isBought, isSelected: item.isSelected, type: item.type)
             }

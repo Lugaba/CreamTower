@@ -73,7 +73,7 @@ class GameScene: SKScene {
     let defaults = UserDefaults.standard
     
     let pauseButton = SKSpriteNode(imageNamed: "pauseButton")
-    
+    var realPause: Bool = false
     
     override func didMove(to view: SKView) {
         highScore = defaults.integer(forKey: "HighScore")
@@ -180,110 +180,116 @@ class GameScene: SKScene {
         recursiveACtionBalls()
     }
     
+    func CBApplicationDidBecomeActive() {
+        
+    }
+    
     // MARK: - Atualizar bolas queda e colisao
     override func update(_ currentTime: TimeInterval) {
-        for i in nuvens {
-            i.position.x += 0.1
-        }
-        if vivo == true {
-            for iceCreamBall in allBalls {
-                let ball = iceCreamBall.iceCreamBallNode
-                ball.position.y -= iceCreamBall.velY
-                
-                if placed.count > 0 {
-                    guard let ultimaBola = placed.last?.iceCreamBallNode else { return }
-                    if (ball.position.y >= ultimaBola.position.y && ball.position.y <= ultimaBola.position.y + ultimaBola.size.height/2) && (ball.position.x >= ultimaBola.position.x - ultimaBola.size.width/2 && ball.position.x <= ultimaBola.position.x + ultimaBola.size.width/2) {
-                        ball.position.x = casca.position.x
-                        ball.position.y = ultimaBola.position.y + ball.size.height/2
-                        
-                        if ball.name == "iceBall" {
-                            score += 1
-                        } else {
-                            lifes -= 1
-                            if lifes == 0 {
-                                vivo = false
-                            }
-                        }
-                        
-                        ball.zPosition = placed[placed.count - 1].iceCreamBallNode.zPosition + 1
-                        ball.name = "placedBall"
-                        placed.append(iceCreamBall)
-                        allBalls.remove(at: allBalls.firstIndex(of: iceCreamBall)!)
-                        
-                        // Descer sorvete com mais de 15 bolas
-                        
-                        if (placed[placed.count - 1].iceCreamBallNode.position.y > (scene?.size.height ?? 0)/3) {
-                            casca.run(SKAction.moveBy(x: 0, y: -ball.size.height+10, duration: 0.2))
-                            for i in nuvens {
-                                i.run(SKAction.moveBy(x: 0, y: -ball.size.height, duration: 0.5))
-                                if i.position.y < -(i.size.height/2) {
-                                    i.position.y = scene?.size.height ?? 1000 + i.size.height
-                                }
-                                if i.position.x > (scene?.size.width)! + i.size.width/2 {
-                                    i.position.x = 0 - i.size.width/2
+        if !realPause {
+            for i in nuvens {
+                i.position.x += 0.1
+            }
+            if vivo == true {
+                for iceCreamBall in allBalls {
+                    let ball = iceCreamBall.iceCreamBallNode
+                    ball.position.y -= iceCreamBall.velY
+                    
+                    if placed.count > 0 {
+                        guard let ultimaBola = placed.last?.iceCreamBallNode else { return }
+                        if (ball.position.y >= ultimaBola.position.y && ball.position.y <= ultimaBola.position.y + ultimaBola.size.height/2) && (ball.position.x >= ultimaBola.position.x - ultimaBola.size.width/2 && ball.position.x <= ultimaBola.position.x + ultimaBola.size.width/2) {
+                            ball.position.x = casca.position.x
+                            ball.position.y = ultimaBola.position.y + ball.size.height/2
+                            
+                            if ball.name == "iceBall" {
+                                score += 1
+                            } else {
+                                lifes -= 1
+                                if lifes == 0 {
+                                    vivo = false
                                 }
                             }
                             
-                            for iceCreamBallPlaced in placed {
-                                let ballPlaced = iceCreamBallPlaced.iceCreamBallNode
-                                ballPlaced.run(SKAction.moveBy(x: 0, y: -ball.size.height+10, duration: 0.2))
-                                //ball.position.y -= ball.frame.width-10
-                                if ballPlaced.position.y < 0 {
-                                    placed.remove(at: placed.firstIndex(of: iceCreamBallPlaced)!)
-                                    ballPlaced.removeFromParent()
+                            ball.zPosition = placed[placed.count - 1].iceCreamBallNode.zPosition + 1
+                            ball.name = "placedBall"
+                            placed.append(iceCreamBall)
+                            allBalls.remove(at: allBalls.firstIndex(of: iceCreamBall)!)
+                            
+                            // Descer sorvete com mais de 15 bolas
+                            
+                            if (placed[placed.count - 1].iceCreamBallNode.position.y > (scene?.size.height ?? 0)/3) {
+                                casca.run(SKAction.moveBy(x: 0, y: -ball.size.height+10, duration: 0.2))
+                                for i in nuvens {
+                                    i.run(SKAction.moveBy(x: 0, y: -ball.size.height, duration: 0.5))
+                                    if i.position.y < -(i.size.height/2) {
+                                        i.position.y = scene?.size.height ?? 1000 + i.size.height
+                                    }
+                                    if i.position.x > (scene?.size.width)! + i.size.width/2 {
+                                        i.position.x = 0 - i.size.width/2
+                                    }
+                                }
+                                
+                                for iceCreamBallPlaced in placed {
+                                    let ballPlaced = iceCreamBallPlaced.iceCreamBallNode
+                                    ballPlaced.run(SKAction.moveBy(x: 0, y: -ball.size.height+10, duration: 0.2))
+                                    //ball.position.y -= ball.frame.width-10
+                                    if ballPlaced.position.y < 0 {
+                                        placed.remove(at: placed.firstIndex(of: iceCreamBallPlaced)!)
+                                        ballPlaced.removeFromParent()
+                                    }
+                                }
+                                if casca.position.y + casca.size.height/2 < 0 {
+                                    casca.removeFromParent()
                                 }
                             }
-                            if casca.position.y + casca.size.height/2 < 0 {
-                                casca.removeFromParent()
+                            
+                            continue
+                        }
+                    } else {
+                        if (ball.position.y >= casca.position.y + casca.size.height/2 && ball.position.y <= casca.position.y + casca.size.height/2 + 5) && ball.position.x >= casca.position.x - casca.size.width/2 && ball.position.x <= casca.position.x + casca.size.width/2{
+                            ball.position.x = casca.position.x
+                            if ball.name == "iceBall" {
+                                score += 1
+                            } else {
+                                lifes -= 1
+                                if lifes == 0 {
+                                    vivo = false
+                                }
                             }
+                            
+                            ball.zPosition = zpos
+                            ball.name = "placedBall"
+                            placed.append(iceCreamBall)
+                            allBalls.remove(at: allBalls.firstIndex(of: iceCreamBall)!)
+                            continue
                         }
                         
-                        continue
                     }
-                } else {
-                    if (ball.position.y >= casca.position.y + casca.size.height/2 && ball.position.y <= casca.position.y + casca.size.height/2 + 5) && ball.position.x >= casca.position.x - casca.size.width/2 && ball.position.x <= casca.position.x + casca.size.width/2{
-                        ball.position.x = casca.position.x
+                    
+                    
+                    if (ball.position.y >= fundo.position.y - 10 && ball.position.y <= fundo.position.y + 10) {
                         if ball.name == "iceBall" {
-                            score += 1
-                        } else {
                             lifes -= 1
                             if lifes == 0 {
                                 vivo = false
                             }
                         }
-                        
-                        ball.zPosition = zpos
-                        ball.name = "placedBall"
-                        placed.append(iceCreamBall)
+                        ball.removeFromParent()
                         allBalls.remove(at: allBalls.firstIndex(of: iceCreamBall)!)
-                        continue
                     }
-                    
+                }
+            } else {
+                realPause.toggle()
+                defaults.set(money, forKey: "Money")
+                
+                if score > highScore {
+                    defaults.set(score, forKey: "HighScore")
+                    ManagerGameCenter.setHighScore(score: self.score)
                 }
                 
-                
-                if (ball.position.y >= fundo.position.y - 10 && ball.position.y <= fundo.position.y + 10) {
-                    if ball.name == "iceBall" {
-                        lifes -= 1
-                        if lifes == 0 {
-                            vivo = false
-                        }
-                    }
-                    ball.removeFromParent()
-                    allBalls.remove(at: allBalls.firstIndex(of: iceCreamBall)!)
-                }
+                gameViewController.showEngGameView(score: score)
             }
-        } else {
-            defaults.set(money, forKey: "Money")
-            
-            if score > highScore {
-                defaults.set(score, forKey: "HighScore")
-                ManagerGameCenter.setHighScore(score: self.score)
-            }
-            
-            gameViewController.showEngGameView(score: score)
         }
-        
     }
     
     
@@ -292,7 +298,7 @@ class GameScene: SKScene {
     // MARK: - Movimento
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if self.isPaused == false {
+        if realPause == false {
             guard let touch = touches.first else { return }
             let location = touch.location(in: self)
             
@@ -314,7 +320,9 @@ class GameScene: SKScene {
             let objects = nodes(at: location)
             
             if objects.contains(pauseButton) {
-                self.isPaused.toggle()
+                let action = action(forKey: "aKey")
+                realPause.toggle()
+                action?.speed = 0
                 gameViewController.pauseGame(score: score)
             }
         }
