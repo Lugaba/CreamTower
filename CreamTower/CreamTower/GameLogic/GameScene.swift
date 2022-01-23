@@ -63,9 +63,12 @@ class GameScene: SKScene {
     
     var score = 0 {
         didSet {
-            if score % 10 == 0 && velocidade < 24  && waitTime > 0.5 {
+            if score % 10 == 0 && velocidade < 10 {
                 velocidade += 1
-                waitTime -= 0.15
+                if waitTime > 0.5 {
+                    waitTime -= 0.15
+                }
+                print(velocidade)
             }
             
             scoreLabel.attributedText = NSMutableAttributedString(string: "\(score)", attributes: strokeTextAttributes)
