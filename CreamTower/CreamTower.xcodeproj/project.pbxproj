@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		DF0736AC27906F3F006674C1 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DF0736AA27906F3F006674C1 /* Model.xcdatamodeld */; };
 		DF0736B027907002006674C1 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0736AF27907002006674C1 /* ShopViewController.swift */; };
+		DF07CEDE279F2CEB00D85635 /* placedSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DF07CEDD279F2CEB00D85635 /* placedSound.mp3 */; };
+		DF07CEE0279F317700D85635 /* badSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DF07CEDF279F317700D85635 /* badSound.mp3 */; };
 		DF4BEFFD2791E0AC00417000 /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4BEFFC2791E0AC00417000 /* PauseView.swift */; };
 		DF4BF0042795CDD200417000 /* ShopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4BF0032795CDD200417000 /* ShopCollectionViewCell.swift */; };
 		DF4BF0092796EA3800417000 /* ManagerGameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4BF0082796EA3800417000 /* ManagerGameCenter.swift */; };
@@ -36,6 +38,8 @@
 		4CFAA4DBBACB52E03BBD2DAF /* Pods_CreamTower.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CreamTower.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF0736AB27906F3F006674C1 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		DF0736AF27907002006674C1 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
+		DF07CEDD279F2CEB00D85635 /* placedSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = placedSound.mp3; sourceTree = "<group>"; };
+		DF07CEDF279F317700D85635 /* badSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = badSound.mp3; sourceTree = "<group>"; };
 		DF4BEFFC2791E0AC00417000 /* PauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseView.swift; sourceTree = "<group>"; };
 		DF4BF0032795CDD200417000 /* ShopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollectionViewCell.swift; sourceTree = "<group>"; };
 		DF4BF0082796EA3800417000 /* ManagerGameCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerGameCenter.swift; sourceTree = "<group>"; };
@@ -78,6 +82,15 @@
 				12EA2F7922171C9A566405C5 /* Pods-CreamTower.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		DF07CED8279F2B6300D85635 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				DF07CEDF279F317700D85635 /* badSound.mp3 */,
+				DF07CEDD279F2CEB00D85635 /* placedSound.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		DF4BEFFB2791E08400417000 /* Views */ = {
@@ -160,6 +173,7 @@
 		DFD26681278F1B84006B2551 /* CreamTower */ = {
 			isa = PBXGroup;
 			children = (
+				DF07CED8279F2B6300D85635 /* Sounds */,
 				DF4BF01127973AA100417000 /* Classes */,
 				DF4BF0072796EA2300417000 /* Game Center */,
 				DF4BF0022795CD9800417000 /* Cells */,
@@ -261,6 +275,8 @@
 				DFF599582790639800BFD833 /* Shrikhand-Regular.ttf in Resources */,
 				DFD2668E278F1B84006B2551 /* Main.storyboard in Resources */,
 				DFD26685278F1B84006B2551 /* GameScene.sks in Resources */,
+				DF07CEE0279F317700D85635 /* badSound.mp3 in Resources */,
+				DF07CEDE279F2CEB00D85635 /* placedSound.mp3 in Resources */,
 				DFD26690278F1B85006B2551 /* Assets.xcassets in Resources */,
 				DFD26693278F1B85006B2551 /* LaunchScreen.storyboard in Resources */,
 			);

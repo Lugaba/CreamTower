@@ -35,7 +35,7 @@ public var itemsData: [ItemEntity] = [
     ItemEntity(name: "Bronze", price: 5000, imageName: "bronzeBall", isBought: false, isSelected: false, type: objectType.flavor.rawValue),
     ItemEntity(name: "Silver", price: 10000, imageName: "silverBall", isBought: false, isSelected: false, type: objectType.flavor.rawValue),
     ItemEntity(name: "Gold", price: 20000, imageName: "goldBall", isBought: false, isSelected: false, type: objectType.flavor.rawValue),
-    
+    ItemEntity(name: "Gold", price: 5, imageName: "goldBall", isBought: false, isSelected: false, type: objectType.flavor.rawValue),
     
     
     ItemEntity(name: "Yellow", price: 0, imageName: "yellowCone", isBought: true, isSelected: true, type: objectType.cone.rawValue),

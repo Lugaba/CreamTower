@@ -85,6 +85,10 @@ class GameScene: SKScene {
     let pauseButton = SKSpriteNode(imageNamed: "pauseButton")
     var realPause: Bool = false
     
+    let placedSoundAction = SKAction.playSoundFileNamed("placedSound.mp3", waitForCompletion: false)
+    let badSoundAction = SKAction.playSoundFileNamed("badSound.mp3", waitForCompletion: false)
+
+    
     override func didMove(to view: SKView) {
         highScore = defaults.integer(forKey: "HighScore")
         money = defaults.integer(forKey: "Money")
@@ -209,8 +213,10 @@ class GameScene: SKScene {
                             
                             if ball.name == "iceBall" {
                                 score += 1
+                                ball.run(placedSoundAction)
                             } else {
                                 lifes -= 1
+                                ball.run(badSoundAction)
                                 if lifes == 0 {
                                     vivo = false
                                 }
@@ -256,8 +262,10 @@ class GameScene: SKScene {
                             ball.position.x = casca.position.x
                             if ball.name == "iceBall" {
                                 score += 1
+                                ball.run(placedSoundAction)
                             } else {
                                 lifes -= 1
+                                ball.run(badSoundAction)
                                 if lifes == 0 {
                                     vivo = false
                                 }
