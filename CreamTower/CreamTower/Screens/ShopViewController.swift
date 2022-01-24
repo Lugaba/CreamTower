@@ -196,8 +196,8 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
         } else {
             let alert = UIAlertController(
-                title: "Rewarded ad isn't available yet.",
-                message: "The rewarded ad cannot be shown at this time",
+                title: "Wait a minute!",
+                message: "We do not have ads to show right now!",
                 preferredStyle: .alert)
             let alertAction = UIAlertAction(
                 title: "OK",
