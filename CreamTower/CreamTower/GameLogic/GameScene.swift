@@ -6,6 +6,7 @@
 //
 
 import SpriteKit
+import AVFoundation
 
 class GameScene: SKScene {
     
@@ -88,10 +89,29 @@ class GameScene: SKScene {
     let placedSoundAction = SKAction.playSoundFileNamed("placedSound.mp3", waitForCompletion: false)
     let badSoundAction = SKAction.playSoundFileNamed("badSound.mp3", waitForCompletion: false)
 
+    var audioPlayer: AVAudioPlayer?
+    
+    var playMusic = true
     
     override func didMove(to view: SKView) {
         highScore = defaults.integer(forKey: "HighScore")
         money = defaults.integer(forKey: "Money")
+        playMusic = defaults.bool(forKey: "Sound")
+        print("HEY \(playMusic)")
+        if let audioFile = Bundle.main.url(forResource: "bgMusic", withExtension: "mp3") {
+            do {
+                try self.audioPlayer = AVAudioPlayer(contentsOf: audioFile)
+                self.audioPlayer?.numberOfLoops = -1
+                self.audioPlayer?.volume = 0.5
+                if playMusic {
+                    self.audioPlayer?.play()
+                }
+            } catch {
+                print("Erro ao tentar tocar o som: \(error)")
+            }
+        } else {
+            print("Audio não encontrado")
+        }
         
         for i in ItemRepository.shared.getAllItems() {
             if i.type == objectType.flavor.rawValue {
@@ -294,6 +314,9 @@ class GameScene: SKScene {
                 }
             } else {
                 realPause.toggle()
+                self.audioPlayer?.pause()
+                playMusic.toggle()
+                UserDefaults.standard.set(playMusic, forKey: "Sound")
                 defaults.set(money, forKey: "Money")
                 
                 if score > highScore {

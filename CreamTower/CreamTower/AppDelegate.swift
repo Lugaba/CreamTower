@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if ItemRepository.shared.getAllItems().count == 0 {
             UserDefaults.standard.set(0, forKey: "Money")
+            UserDefaults.standard.set(true, forKey: "Sound")
             for item in itemsData {
                 _ = ItemRepository.shared.createItem(name: item.name, price: item.price, imageName: item.imageName, isBought: item.isBought, isSelected: item.isSelected, type: item.type)
             }

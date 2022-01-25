@@ -13,8 +13,6 @@ class ManagerGameCenter: GKGameCenterViewController, GKGameCenterControllerDeleg
     static func authenticateUser(from:UIViewController) -> Void {
         GKLocalPlayer.local.authenticateHandler = { vc, error in
             if (vc == nil && error == nil) {
-                self.showAvatarGameCenter(isVisible: true)
-                //self.getHighScoreFromLeadboard()
                 return
             }
             guard error == nil else { return }

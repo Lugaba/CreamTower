@@ -28,6 +28,7 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ManagerGameCenter.showAvatarGameCenter(isVisible: false)
         
         money = defaults.integer(forKey: "Money")
         
