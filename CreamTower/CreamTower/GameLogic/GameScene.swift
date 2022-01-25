@@ -315,7 +315,6 @@ class GameScene: SKScene {
             } else {
                 realPause.toggle()
                 self.audioPlayer?.pause()
-                playMusic.toggle()
                 UserDefaults.standard.set(playMusic, forKey: "Sound")
                 defaults.set(money, forKey: "Money")
                 
