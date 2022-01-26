@@ -22,6 +22,7 @@ class GameViewController: UIViewController {
     var score = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        ManagerGameCenter.showAvatarGameCenter(isVisible: false)
         
         endGameView.removeFromSuperview()
 
@@ -46,31 +47,61 @@ class GameViewController: UIViewController {
         }
     }
     
+    
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
     
     func pauseGame(score: Int) {
         self.score = score
-        if currentGame?.isPaused == false {
+        if currentGame?.realPause == false {
             pauseView.removeFromSuperview()
+            currentGame?.action(forKey: "aKey")?.speed = 1
         } else {
 
             self.view.addSubview(self.pauseView)
             pauseView.backButton.addTarget(self, action: #selector(pauseGameToggle), for: .touchUpInside)
             pauseView.quitButton.addTarget(self, action: #selector(exitToMenu), for: .touchUpInside)
+            pauseView.soundButton.addTarget(self, action: #selector(pauseMusic), for: .touchUpInside)
+            if currentGame?.playMusic == false {
+                pauseView.soundButton.setBackgroundImage(UIImage(systemName: "speaker.slash.fill"), for: .normal)
+                pauseView.soundButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
+            } else {
+                pauseView.soundButton.setBackgroundImage(UIImage(systemName: "speaker.wave.3.fill"), for: .normal)
+                pauseView.soundButton.widthAnchor.constraint(equalToConstant: 35).isActive = true
+            }
+            
             pauseView.setPointsText(score: score)
             pauseView.setHighPointsText(highScore: defaults.integer(forKey: "HighScore"))
         }
+        print(currentGame?.action(forKey: "aKey")?.speed)
     }
     
     @objc func pauseGameToggle() {
-        currentGame?.isPaused.toggle()
+        currentGame?.realPause.toggle()
         pauseGame(score: score)
     }
     
     @objc func exitToMenu() {
+        currentGame?.audioPlayer?.stop()
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func pauseMusic() {
+        if currentGame?.playMusic == true{
+            currentGame?.audioPlayer?.pause()
+            currentGame?.playMusic.toggle()
+            pauseView.soundButton.setBackgroundImage(UIImage(systemName: "speaker.slash.fill"), for: .normal)
+            pauseView.soundButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        } else {
+            currentGame?.audioPlayer?.play()
+            currentGame?.playMusic.toggle()
+            pauseView.soundButton.setBackgroundImage(UIImage(systemName: "speaker.wave.3.fill"), for: .normal)
+            pauseView.soundButton.widthAnchor.constraint(equalToConstant: 35).isActive = true
+        }
+        UserDefaults.standard.set(currentGame?.playMusic, forKey: "Sound")
+        print(currentGame?.playMusic)
     }
     
     func showEngGameView(score: Int) {
@@ -80,5 +111,6 @@ class GameViewController: UIViewController {
         endGameView.setPointsText(score: score)
         endGameView.setHighPointsText(highScore: defaults.integer(forKey: "HighScore"))
     }
+
     
 }

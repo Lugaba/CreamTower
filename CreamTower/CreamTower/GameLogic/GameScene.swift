@@ -6,6 +6,7 @@
 //
 
 import SpriteKit
+import AVFoundation
 
 class GameScene: SKScene {
     
@@ -40,31 +41,41 @@ class GameScene: SKScene {
     }
     
     var vivo = true
-    var velocidade: CGFloat = 6
-    var waitTime = 1.5
+    var velocidade: CGFloat = 3
+    var waitTime: Double = 1.25
     
     var scoreLabel = SKLabelNode()
     var moneyLabel = SKLabelNode()
     var money: Int = 0
     
+    let strokeTextAttributes = [
+      NSAttributedString.Key.strokeColor : UIColor(named: "grayApp"),
+      NSAttributedString.Key.foregroundColor : UIColor.white,
+      NSAttributedString.Key.strokeWidth : -1.0,
+      NSAttributedString.Key.font : UIFont(name: "Shrikhand-Regular", size: 40)]
+      as [NSAttributedString.Key : Any]
+    
+    let strokeTextAttributesMoney = [
+      NSAttributedString.Key.strokeColor : UIColor(named: "grayApp"),
+      NSAttributedString.Key.foregroundColor : UIColor.white,
+      NSAttributedString.Key.strokeWidth : -1.0,
+      NSAttributedString.Key.font : UIFont(name: "Shrikhand-Regular", size: 20)]
+      as [NSAttributedString.Key : Any]
+    
     var score = 0 {
         didSet {
-            if score % 25 == 0 && waitTime > 0.5 {
-                waitTime -= 0.1
-            } else {
-                if score % 13 == 0 && velocidade < 21 {
-                    velocidade += 1
+            if score % 10 == 0 && velocidade < 10 {
+                velocidade += 1
+                if waitTime > 0.5 {
+                    waitTime -= 0.15
                 }
+                print(velocidade)
             }
             
-            //            if score % 20 == 0 && waitTime > 0.5{
-            //                waitTime -= 0.5
-            //            } else if score % 10 == 0 && velocidade < 30{
-            //                velocidade += 3
-            //            }
-            scoreLabel.text = "\(score)"
+            scoreLabel.attributedText = NSMutableAttributedString(string: "\(score)", attributes: strokeTextAttributes)
             money += 1
-            moneyLabel.text = "\(money)"
+            moneyLabel.attributedText = NSMutableAttributedString(string: "\(money)", attributes: strokeTextAttributesMoney)
+
         }
     }
     
@@ -73,11 +84,34 @@ class GameScene: SKScene {
     let defaults = UserDefaults.standard
     
     let pauseButton = SKSpriteNode(imageNamed: "pauseButton")
+    var realPause: Bool = false
     
+    let placedSoundAction = SKAction.playSoundFileNamed("placedSound.mp3", waitForCompletion: false)
+    let badSoundAction = SKAction.playSoundFileNamed("badSound.mp3", waitForCompletion: false)
+
+    var audioPlayer: AVAudioPlayer?
+    
+    var playMusic = true
     
     override func didMove(to view: SKView) {
         highScore = defaults.integer(forKey: "HighScore")
         money = defaults.integer(forKey: "Money")
+        playMusic = defaults.bool(forKey: "Sound")
+        print("HEY \(playMusic)")
+        if let audioFile = Bundle.main.url(forResource: "bgMusic", withExtension: "mp3") {
+            do {
+                try self.audioPlayer = AVAudioPlayer(contentsOf: audioFile)
+                self.audioPlayer?.numberOfLoops = -1
+                self.audioPlayer?.volume = 0.5
+                if playMusic {
+                    self.audioPlayer?.play()
+                }
+            } catch {
+                print("Erro ao tentar tocar o som: \(error)")
+            }
+        } else {
+            print("Audio não encontrado")
+        }
         
         for i in ItemRepository.shared.getAllItems() {
             if i.type == objectType.flavor.rawValue {
@@ -127,10 +161,8 @@ class GameScene: SKScene {
         pauseButton.position = CGPoint(x: 40, y: scene!.size.height-55)
         addChild(pauseButton)
         
-        scoreLabel.text = "0"
+        scoreLabel.attributedText = NSMutableAttributedString(string: "\(score)", attributes: strokeTextAttributes)
         scoreLabel.position = CGPoint(x: scene!.size.width/2, y: scene!.size.height-70)
-        scoreLabel.fontName = "Shrikhand-Regular"
-        scoreLabel.fontSize = 40
         scoreLabel.zPosition = 1000
         addChild(scoreLabel)
         
@@ -157,11 +189,9 @@ class GameScene: SKScene {
             addChild(nuvens[i])
         }
         
-        moneyLabel.text = "\(money)"
+        moneyLabel.attributedText = NSMutableAttributedString(string: "\(money)", attributes: strokeTextAttributesMoney)
         moneyLabel.horizontalAlignmentMode = .right
         moneyLabel.position = CGPoint(x: scene!.size.width - 50, y: scene!.size.height - 65)
-        moneyLabel.fontName = "Shrikhand-Regular"
-        moneyLabel.fontSize = 20
         moneyLabel.zPosition = 1000
         addChild(moneyLabel)
         
@@ -180,110 +210,122 @@ class GameScene: SKScene {
         recursiveACtionBalls()
     }
     
+    func CBApplicationDidBecomeActive() {
+        
+    }
+    
     // MARK: - Atualizar bolas queda e colisao
     override func update(_ currentTime: TimeInterval) {
-        for i in nuvens {
-            i.position.x += 0.1
-        }
-        if vivo == true {
-            for iceCreamBall in allBalls {
-                let ball = iceCreamBall.iceCreamBallNode
-                ball.position.y -= iceCreamBall.velY
-                
-                if placed.count > 0 {
-                    guard let ultimaBola = placed.last?.iceCreamBallNode else { return }
-                    if (ball.position.y >= ultimaBola.position.y && ball.position.y <= ultimaBola.position.y + ultimaBola.size.height/2) && (ball.position.x >= ultimaBola.position.x - ultimaBola.size.width/2 && ball.position.x <= ultimaBola.position.x + ultimaBola.size.width/2) {
-                        ball.position.x = casca.position.x
-                        ball.position.y = ultimaBola.position.y + ball.size.height/2
-                        
-                        if ball.name == "iceBall" {
-                            score += 1
-                        } else {
-                            lifes -= 1
-                            if lifes == 0 {
-                                vivo = false
-                            }
-                        }
-                        
-                        ball.zPosition = placed[placed.count - 1].iceCreamBallNode.zPosition + 1
-                        ball.name = "placedBall"
-                        placed.append(iceCreamBall)
-                        allBalls.remove(at: allBalls.firstIndex(of: iceCreamBall)!)
-                        
-                        // Descer sorvete com mais de 15 bolas
-                        
-                        if (placed[placed.count - 1].iceCreamBallNode.position.y > (scene?.size.height ?? 0)/3) {
-                            casca.run(SKAction.moveBy(x: 0, y: -ball.size.height+10, duration: 0.2))
-                            for i in nuvens {
-                                i.run(SKAction.moveBy(x: 0, y: -ball.size.height, duration: 0.5))
-                                if i.position.y < -(i.size.height/2) {
-                                    i.position.y = scene?.size.height ?? 1000 + i.size.height
-                                }
-                                if i.position.x > (scene?.size.width)! + i.size.width/2 {
-                                    i.position.x = 0 - i.size.width/2
+        if !realPause {
+            for i in nuvens {
+                i.position.x += 0.1
+            }
+            if vivo == true {
+                for iceCreamBall in allBalls {
+                    let ball = iceCreamBall.iceCreamBallNode
+                    ball.position.y -= iceCreamBall.velY
+                    
+                    if placed.count > 0 {
+                        guard let ultimaBola = placed.last?.iceCreamBallNode else { return }
+                        if (ball.position.y >= ultimaBola.position.y && ball.position.y <= ultimaBola.position.y + ultimaBola.size.height/2) && (ball.position.x >= ultimaBola.position.x - ultimaBola.size.width/2 && ball.position.x <= ultimaBola.position.x + ultimaBola.size.width/2) {
+                            ball.position.x = casca.position.x
+                            ball.position.y = ultimaBola.position.y + ball.size.height/2
+                            
+                            if ball.name == "iceBall" {
+                                score += 1
+                                ball.run(placedSoundAction)
+                            } else {
+                                lifes -= 1
+                                ball.run(badSoundAction)
+                                if lifes == 0 {
+                                    vivo = false
                                 }
                             }
                             
-                            for iceCreamBallPlaced in placed {
-                                let ballPlaced = iceCreamBallPlaced.iceCreamBallNode
-                                ballPlaced.run(SKAction.moveBy(x: 0, y: -ball.size.height+10, duration: 0.2))
-                                //ball.position.y -= ball.frame.width-10
-                                if ballPlaced.position.y < 0 {
-                                    placed.remove(at: placed.firstIndex(of: iceCreamBallPlaced)!)
-                                    ballPlaced.removeFromParent()
+                            ball.zPosition = placed[placed.count - 1].iceCreamBallNode.zPosition + 1
+                            ball.name = "placedBall"
+                            placed.append(iceCreamBall)
+                            allBalls.remove(at: allBalls.firstIndex(of: iceCreamBall)!)
+                            
+                            // Descer sorvete com mais de 15 bolas
+                            
+                            if (placed[placed.count - 1].iceCreamBallNode.position.y > (scene?.size.height ?? 0)/3) {
+                                casca.run(SKAction.moveBy(x: 0, y: -ball.size.height+10, duration: 0.2))
+                                for i in nuvens {
+                                    i.run(SKAction.moveBy(x: 0, y: -ball.size.height, duration: 0.5))
+                                    if i.position.y < -(i.size.height/2) {
+                                        i.position.y = scene?.size.height ?? 1000 + i.size.height
+                                    }
+                                    if i.position.x > (scene?.size.width)! + i.size.width/2 {
+                                        i.position.x = 0 - i.size.width/2
+                                    }
+                                }
+                                
+                                for iceCreamBallPlaced in placed {
+                                    let ballPlaced = iceCreamBallPlaced.iceCreamBallNode
+                                    ballPlaced.run(SKAction.moveBy(x: 0, y: -ball.size.height+10, duration: 0.2))
+                                    //ball.position.y -= ball.frame.width-10
+                                    if ballPlaced.position.y < 0 {
+                                        placed.remove(at: placed.firstIndex(of: iceCreamBallPlaced)!)
+                                        ballPlaced.removeFromParent()
+                                    }
+                                }
+                                if casca.position.y + casca.size.height/2 < 0 {
+                                    casca.removeFromParent()
                                 }
                             }
-                            if casca.position.y + casca.size.height/2 < 0 {
-                                casca.removeFromParent()
+                            
+                            continue
+                        }
+                    } else {
+                        if (ball.position.y >= casca.position.y + casca.size.height/2 && ball.position.y <= casca.position.y + casca.size.height/2 + 5) && ball.position.x >= casca.position.x - casca.size.width/2 && ball.position.x <= casca.position.x + casca.size.width/2{
+                            ball.position.x = casca.position.x
+                            if ball.name == "iceBall" {
+                                score += 1
+                                ball.run(placedSoundAction)
+                            } else {
+                                lifes -= 1
+                                ball.run(badSoundAction)
+                                if lifes == 0 {
+                                    vivo = false
+                                }
                             }
+                            
+                            ball.zPosition = zpos
+                            ball.name = "placedBall"
+                            placed.append(iceCreamBall)
+                            allBalls.remove(at: allBalls.firstIndex(of: iceCreamBall)!)
+                            continue
                         }
                         
-                        continue
                     }
-                } else {
-                    if (ball.position.y >= casca.position.y + casca.size.height/2 && ball.position.y <= casca.position.y + casca.size.height/2 + 5) && ball.position.x >= casca.position.x - casca.size.width/2 && ball.position.x <= casca.position.x + casca.size.width/2{
-                        ball.position.x = casca.position.x
+                    
+                    
+                    if (ball.position.y >= fundo.position.y - 10 && ball.position.y <= fundo.position.y + 10) {
                         if ball.name == "iceBall" {
-                            score += 1
-                        } else {
                             lifes -= 1
                             if lifes == 0 {
                                 vivo = false
                             }
                         }
-                        
-                        ball.zPosition = zpos
-                        ball.name = "placedBall"
-                        placed.append(iceCreamBall)
+                        ball.removeFromParent()
                         allBalls.remove(at: allBalls.firstIndex(of: iceCreamBall)!)
-                        continue
                     }
-                    
+                }
+            } else {
+                realPause.toggle()
+                self.audioPlayer?.pause()
+                UserDefaults.standard.set(playMusic, forKey: "Sound")
+                defaults.set(money, forKey: "Money")
+                
+                if score > highScore {
+                    defaults.set(score, forKey: "HighScore")
+                    ManagerGameCenter.setHighScore(score: self.score)
                 }
                 
-                
-                if (ball.position.y >= fundo.position.y - 10 && ball.position.y <= fundo.position.y + 10) {
-                    if ball.name == "iceBall" {
-                        lifes -= 1
-                        if lifes == 0 {
-                            vivo = false
-                        }
-                    }
-                    ball.removeFromParent()
-                    allBalls.remove(at: allBalls.firstIndex(of: iceCreamBall)!)
-                }
+                gameViewController.showEngGameView(score: score)
             }
-        } else {
-            defaults.set(money, forKey: "Money")
-            
-            if score > highScore {
-                defaults.set(score, forKey: "HighScore")
-                ManagerGameCenter.setHighScore(score: self.score)
-            }
-            
-            gameViewController.showEngGameView(score: score)
         }
-        
     }
     
     
@@ -292,7 +334,7 @@ class GameScene: SKScene {
     // MARK: - Movimento
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if self.isPaused == false {
+        if realPause == false {
             guard let touch = touches.first else { return }
             let location = touch.location(in: self)
             
@@ -314,7 +356,9 @@ class GameScene: SKScene {
             let objects = nodes(at: location)
             
             if objects.contains(pauseButton) {
-                self.isPaused.toggle()
+                let action = action(forKey: "aKey")
+                realPause.toggle()
+                action?.speed = 0
                 gameViewController.pauseGame(score: score)
             }
         }

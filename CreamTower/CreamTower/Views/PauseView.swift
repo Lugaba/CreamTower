@@ -20,6 +20,8 @@ class PauseView: UIView {
     
     var quitButton: UIButton = UIButton()
     
+    var soundButton: UIButton = UIButton()
+    
     private let container: UIView = {
         let v = UIView()
         v.backgroundColor = .white
@@ -46,7 +48,9 @@ class PauseView: UIView {
         self.addSubview(container)
         
         
-
+        soundButton.setBackgroundImage(UIImage(systemName: "speaker.wave.3.fill"), for: .normal)
+        soundButton.tintColor = UIColor(named: "pinkApp")
+        self.container.addSubview(self.soundButton)
         
         titleLabel.text = "Game Paused"
         titleLabel.font = UIFont(name: "Shrikhand-Regular", size: 30)
@@ -94,6 +98,12 @@ class PauseView: UIView {
         self.container.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         self.container.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8).isActive = true
         self.container.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5).isActive = true
+        
+        soundButton.translatesAutoresizingMaskIntoConstraints = false
+        self.soundButton.bottomAnchor.constraint(equalTo: self.container.bottomAnchor, constant: -16).isActive = true
+        self.soundButton.leadingAnchor.constraint(equalTo: self.container.leadingAnchor, constant: 16).isActive = true
+        self.soundButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        self.soundButton.widthAnchor.constraint(equalToConstant: 35).isActive = true
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.titleLabel.centerXAnchor.constraint(equalTo: self.container.centerXAnchor).isActive = true

@@ -6,14 +6,17 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
-class ShopViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ShopViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, GADFullScreenContentDelegate {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var moneyLabel: UILabel!
     @IBOutlet weak var unitsLabel: UILabel!
     @IBOutlet weak var shopCollection: UICollectionView!
     @IBOutlet weak var shopSegmented: UISegmentedControl!
+    
+    var rewardedAd: GADRewardedAd?
     
     let reuseIdentifier = "shopCell"
     
@@ -25,6 +28,7 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ManagerGameCenter.showAvatarGameCenter(isVisible: false)
         
         money = defaults.integer(forKey: "Money")
         
@@ -51,30 +55,31 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     
     @IBAction func exitToMenu(_ sender: Any) {
+        print(defaults.integer(forKey: "Money"))
         navigationController?.popViewController(animated: true)
     }
     
     @IBAction func suitDidChange(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
-            case 0:
-                type = .flavor
-            case 1:
-                type = .cone
-            case 2:
-                type = .background
-            default:
-                type = .flavor
+        case 0:
+            type = .flavor
+        case 1:
+            type = .cone
+        case 2:
+            type = .background
+        default:
+            type = .flavor
         }
         
         
         unitsLabel.text = "\(getNumberBought(type: type, itemArray: &itemArray)) of \(itemArray.count)"
-
+        
         shopCollection.reloadData()
     }
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return itemArray.count
+        return itemArray.count
     }
     
     
@@ -130,7 +135,7 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
             ItemRepository.shared.saveContext()
         } else {
-            if money > itemArray[indexPath.row].price {
+            if money >= itemArray[indexPath.row].price {
                 itemArray[indexPath.row].isBought.toggle()
                 ItemRepository.shared.saveContext()
                 money -= Int(itemArray[indexPath.row].price)
@@ -167,15 +172,75 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return true
     }
     
+    // MARK: Calling Ad
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    func callAd() {
+        GADRewardedAd.load(
+            withAdUnitID: "ca-app-pub-3940256099942544/1712485313", request: GADRequest()
+        ) { (ad, error) in
+            if let error = error {
+                print("Rewarded ad failed to load with error: \(error.localizedDescription)")
+                return
+            }
+            print("Loading Succeeded")
+            self.rewardedAd = ad
+            self.rewardedAd?.fullScreenContentDelegate = self
+        }
+    }
+    
+    @IBAction func showAd(_ sender: Any) {
+        if let ad = rewardedAd {
+            ad.present(fromRootViewController: self) {
+                let reward = ad.adReward
+                self.earnCoins(value: 50)
+                // TODO: Reward the user.
+            }
+        } else {
+            let alert = UIAlertController(
+                title: "Wait a minute!",
+                message: "We do not have ads to show right now!",
+                preferredStyle: .alert)
+            let alertAction = UIAlertAction(
+                title: "OK",
+                style: .cancel,
+                handler: nil)
+            alert.addAction(alertAction)
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func earnCoins(value: NSInteger) {
+        money += value
+        defaults.set(money, forKey: "Money")
+        print(defaults.integer(forKey: "Money"))
+        moneyLabel.text = "\(money)"
+    }
+    
+    // MARK: GADFullScreenContentDelegate
+    func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Rewarded ad presented.")
+    }
+    
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Rewarded ad dismissed.")
+        self.callAd()
+    }
+    
+    func ad(
+        _ ad: GADFullScreenPresentingAd,
+        didFailToPresentFullScreenContentWithError error: Error
+    ) {
+        print("Rewarded ad failed to present with error: \(error.localizedDescription).")
+        let alert = UIAlertController(
+            title: "Wait a minute!",
+            message: "We do not have ads to show right now!",
+            preferredStyle: .alert)
+        let alertAction = UIAlertAction(
+            title: "OK",
+            style: .cancel,
+            handler: nil)
+        alert.addAction(alertAction)
+        self.present(alert, animated: true, completion: nil)
+    }
     
 }

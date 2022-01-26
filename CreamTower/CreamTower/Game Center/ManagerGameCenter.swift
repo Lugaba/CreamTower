@@ -12,11 +12,7 @@ class ManagerGameCenter: GKGameCenterViewController, GKGameCenterControllerDeleg
     
     static func authenticateUser(from:UIViewController) -> Void {
         GKLocalPlayer.local.authenticateHandler = { vc, error in
-            print(vc)
-            print(error)
             if (vc == nil && error == nil) {
-                self.showAvatarGameCenter(isVisible: true)
-                //self.getHighScoreFromLeadboard()
                 return
             }
             guard error == nil else { return }
@@ -35,13 +31,13 @@ class ManagerGameCenter: GKGameCenterViewController, GKGameCenterControllerDeleg
     
     static func setHighScore(score:Int) -> Void {
         if (GKLocalPlayer.local.isAuthenticated) {
-            GKLeaderboard.submitScore(score, context: 0, player: GKLocalPlayer.local, leaderboardIDs: ["testesorvete1"], completionHandler: {error in} )
+            GKLeaderboard.submitScore(score, context: 0, player: GKLocalPlayer.local, leaderboardIDs: ["lucaHummel.CreamTower.Scores"], completionHandler: {error in} )
         }
     }
     
 //    static func getHighScoreFromLeadboard(label:UILabel) -> Void {
 //        if (GKLocalPlayer.local.isAuthenticated) {
-//            GKLeaderboard.loadLeaderboards(IDs: ["testesorvete1"]) { leaderboards, _ in
+//            GKLeaderboard.loadLeaderboards(IDs: ["lucaHummel.CreamTower.Scores"]) { leaderboards, _ in
 //                leaderboards?[0].loadEntries(for: [GKLocalPlayer.local], timeScope: .allTime) {
 //                    player, _, _ in
 //                    UserDefaults.standard.set(player?.score, forKey: "HighScore")
@@ -54,7 +50,7 @@ class ManagerGameCenter: GKGameCenterViewController, GKGameCenterControllerDeleg
     public func toSpecificPage(from:UIViewController, to:GKGameCenterViewControllerState) -> Bool {
         if (GKLocalPlayer.local.isAuthenticated) {
             let viewController = GKGameCenterViewController(
-                            leaderboardID: "testesorvete1",
+                            leaderboardID: "lucaHummel.CreamTower.Scores",
                             playerScope: .global,
                             timeScope: .allTime) 
             viewController.gameCenterDelegate = self
