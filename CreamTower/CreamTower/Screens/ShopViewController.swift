@@ -173,10 +173,10 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     // MARK: Calling Ad
-    
+    // teste id ca-app-pub-3940256099942544/1712485313
     func callAd() {
         GADRewardedAd.load(
-            withAdUnitID: "ca-app-pub-3940256099942544/1712485313", request: GADRequest()
+            withAdUnitID: "ca-app-pub-3336288595900325/6841625424", request: GADRequest()
         ) { (ad, error) in
             if let error = error {
                 print("Rewarded ad failed to load with error: \(error.localizedDescription)")
