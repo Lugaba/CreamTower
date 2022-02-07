@@ -21,7 +21,7 @@
 		DF4DAA0C279094D400FA4367 /* ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DAA0B279094D400FA4367 /* ItemRepository.swift */; };
 		DF4DAA0F2790966700FA4367 /* IceCreamBall.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DAA0E2790966700FA4367 /* IceCreamBall.swift */; };
 		DF9B68D627B1A78A00C34652 /* String+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B68D527B1A78A00C34652 /* String+Localize.swift */; };
-		DF9B68DC27B1A8E100C34652 /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = DF9B68DB27B1A8E100C34652 /* Localization.strings */; };
+		DF9B68E427B1A94200C34652 /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = DF9B68E627B1A94200C34652 /* Localization.strings */; };
 		DFB685CC27A0708300058E7F /* bgMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DFB685CB27A0708300058E7F /* bgMusic.mp3 */; };
 		DFC23F5627ADC7CE009E0D8F /* Stickers.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFC23F5527ADC7CE009E0D8F /* Stickers.xcassets */; };
 		DFC23F5A27ADC7CE009E0D8F /* CreamStickers.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DFC23F5327ADC7CD009E0D8F /* CreamStickers.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -79,7 +79,10 @@
 		DF4DAA0B279094D400FA4367 /* ItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepository.swift; sourceTree = "<group>"; };
 		DF4DAA0E2790966700FA4367 /* IceCreamBall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IceCreamBall.swift; sourceTree = "<group>"; };
 		DF9B68D527B1A78A00C34652 /* String+Localize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localize.swift"; sourceTree = "<group>"; };
-		DF9B68DB27B1A8E100C34652 /* Localization.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localization.strings; sourceTree = "<group>"; };
+		DF9B68E227B1A92D00C34652 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
+		DF9B68E327B1A92E00C34652 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		DF9B68E527B1A94200C34652 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localization.strings"; sourceTree = "<group>"; };
+		DF9B68E727B1A94600C34652 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localization.strings; sourceTree = "<group>"; };
 		DFB685CB27A0708300058E7F /* bgMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgMusic.mp3; sourceTree = "<group>"; };
 		DFC23F5327ADC7CD009E0D8F /* CreamStickers.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CreamStickers.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFC23F5527ADC7CE009E0D8F /* Stickers.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Stickers.xcassets; sourceTree = "<group>"; };
@@ -199,7 +202,7 @@
 		DF9B68D827B1A84700C34652 /* Localize */ = {
 			isa = PBXGroup;
 			children = (
-				DF9B68DB27B1A8E100C34652 /* Localization.strings */,
+				DF9B68E627B1A94200C34652 /* Localization.strings */,
 			);
 			path = Localize;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = DFD26676278F1B84006B2551;
 			productRefGroup = DFD26680278F1B84006B2551 /* Products */;
@@ -370,7 +374,7 @@
 				DFD2668E278F1B84006B2551 /* Main.storyboard in Resources */,
 				DFD26685278F1B84006B2551 /* GameScene.sks in Resources */,
 				DFB685CC27A0708300058E7F /* bgMusic.mp3 in Resources */,
-				DF9B68DC27B1A8E100C34652 /* Localization.strings in Resources */,
+				DF9B68E427B1A94200C34652 /* Localization.strings in Resources */,
 				DF07CEE0279F317700D85635 /* badSound.mp3 in Resources */,
 				DF07CEDE279F2CEB00D85635 /* placedSound.mp3 in Resources */,
 				DFD26690278F1B85006B2551 /* Assets.xcassets in Resources */,
@@ -456,10 +460,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		DF9B68E627B1A94200C34652 /* Localization.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DF9B68E527B1A94200C34652 /* pt-BR */,
+				DF9B68E727B1A94600C34652 /* en */,
+			);
+			name = Localization.strings;
+			sourceTree = "<group>";
+		};
 		DFD2668C278F1B84006B2551 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				DFD2668D278F1B84006B2551 /* Base */,
+				DF9B68E227B1A92D00C34652 /* pt-BR */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -468,6 +482,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				DFD26692278F1B85006B2551 /* Base */,
+				DF9B68E327B1A92E00C34652 /* pt-BR */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -517,6 +532,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -578,6 +594,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

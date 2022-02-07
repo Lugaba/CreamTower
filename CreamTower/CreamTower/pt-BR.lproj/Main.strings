@@ -1,0 +1,54 @@
+
+/* Class = "UIButton"; configuration.title = " "; ObjectID = "78m-yq-ghs"; */
+"78m-yq-ghs.configuration.title" = " ";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "78m-yq-ghs"; */
+"78m-yq-ghs.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "7fJ-o6-61Z"; */
+"7fJ-o6-61Z.text" = "Label";
+
+/* Class = "UIButton"; configuration.title = " "; ObjectID = "SWk-n8-QUe"; */
+"SWk-n8-QUe.configuration.title" = " ";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "SWk-n8-QUe"; */
+"SWk-n8-QUe.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = " "; ObjectID = "TRF-sF-U6u"; */
+"TRF-sF-U6u.configuration.title" = " ";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "TRF-sF-U6u"; */
+"TRF-sF-U6u.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "V75-kc-Nq4"; */
+"V75-kc-Nq4.text" = "Label";
+
+/* Class = "UIButton"; configuration.title = " "; ObjectID = "gLD-Dk-Da7"; */
+"gLD-Dk-Da7.configuration.title" = " ";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "gLD-Dk-Da7"; */
+"gLD-Dk-Da7.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "TitleLabel"; ObjectID = "gRE-jF-5Wr"; */
+"gRE-jF-5Wr.text" = "TitleLabel";
+
+/* Class = "UIButton"; configuration.title = " "; ObjectID = "glB-Yd-GgT"; */
+"glB-Yd-GgT.configuration.title" = " ";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "glB-Yd-GgT"; */
+"glB-Yd-GgT.normalTitle" = "Button";
+
+/* Class = "UISegmentedControl"; gqg-Gb-D0e.segmentTitles[0] = "Flavors"; ObjectID = "gqg-Gb-D0e"; */
+"gqg-Gb-D0e.segmentTitles[0]" = "Flavors";
+
+/* Class = "UISegmentedControl"; gqg-Gb-D0e.segmentTitles[1] = "Cones"; ObjectID = "gqg-Gb-D0e"; */
+"gqg-Gb-D0e.segmentTitles[1]" = "Cones";
+
+/* Class = "UISegmentedControl"; gqg-Gb-D0e.segmentTitles[2] = "Backgrounds"; ObjectID = "gqg-Gb-D0e"; */
+"gqg-Gb-D0e.segmentTitles[2]" = "Backgrounds";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ril-j4-clC"; */
+"ril-j4-clC.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Shop"; ObjectID = "yvq-Xa-KWl"; */
+"yvq-Xa-KWl.title" = "Shop";

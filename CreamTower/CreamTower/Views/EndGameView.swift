@@ -48,18 +48,18 @@ class EndGameView: UIView {
         
 
         
-        titleLabel.text = "Game Over"
+        titleLabel.text = "Game Over".localized()
         titleLabel.font = UIFont(name: "Shrikhand-Regular", size: 30)
         titleLabel.textColor = UIColor(named: "pinkApp")
         self.container.addSubview(self.titleLabel)
         
         
-        scoreLabel.text = "Score"
+        scoreLabel.text = "Score".localized()
         scoreLabel.font = UIFont(name: "Shrikhand-Regular", size: 25)
         scoreLabel.textColor = UIColor(named: "grayApp")
         self.container.addSubview(self.scoreLabel)
         
-        highScoreLabel.text = "High"
+        highScoreLabel.text = "High".localized()
         highScoreLabel.font = UIFont(name: "Shrikhand-Regular", size: 25)
         highScoreLabel.textColor = UIColor(named: "grayApp")
         self.container.addSubview(self.highScoreLabel)

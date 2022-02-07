@@ -34,7 +34,7 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         navigationController?.isNavigationBarHidden = true
         
-        titleLabel.text = "Shop"
+        titleLabel.text = "Shop".localized()
         titleLabel.font = UIFont(name: "Shrikhand-Regular", size: 45)
         titleLabel.textColor = UIColor(named: "pinkApp")
         
@@ -45,6 +45,9 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         
         shopSegmented.setTitleTextAttributes(titleTextAttributes, for: .normal)
+        shopSegmented.setTitle(shopSegmented.titleForSegment(at: 0)?.localized(), forSegmentAt: 0)
+        shopSegmented.setTitle(shopSegmented.titleForSegment(at: 1)?.localized(), forSegmentAt: 1)
+        shopSegmented.setTitle(shopSegmented.titleForSegment(at: 2)?.localized(), forSegmentAt: 2)
         
         unitsLabel.text = "\(getNumberBought(type: type, itemArray: &itemArray)) of \(itemArray.count)"
         unitsLabel.font = UIFont(name: "Shrikhand-Regular", size: 20)
@@ -93,7 +96,7 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
         cell.layer.shadowRadius = 4
         cell.layer.masksToBounds = false
         
-        cell.titleLabel.text = itemArray[indexPath.row].name
+        cell.titleLabel.text = itemArray[indexPath.row].name?.localized()
         cell.titleLabel.font = UIFont(name: "Shrikhand-Regular", size: 20)
         cell.titleLabel.textColor = UIColor(named: "pinkApp")
         
@@ -105,9 +108,9 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
             cell.lockView.isHidden = true
             cell.goldIcon.isHidden = true
             if itemArray[indexPath.row].isSelected == false{
-                cell.StatusLabel.text = "Select"
+                cell.StatusLabel.text = "Select".localized()
             } else {
-                cell.StatusLabel.text = "Selected"
+                cell.StatusLabel.text = "Selected".localized()
                 cell.StatusLabel.textColor = UIColor(named: "greenApp")
             }
         } else {
@@ -144,7 +147,7 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 moneyLabel.text = "\(money)"
                 unitsLabel.text = "\(getNumberBought(type: type, itemArray: &itemArray)) of \(itemArray.count)"
             } else {
-                let ac = UIAlertController(title: "You do not have enough CreamGold", message: nil, preferredStyle: .alert)
+                let ac = UIAlertController(title: "You do not have enough CreamGold".localized(), message: nil, preferredStyle: .alert)
                 ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(ac, animated: true)
             }
@@ -197,8 +200,8 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
         } else {
             let alert = UIAlertController(
-                title: "Wait a minute!",
-                message: "We do not have ads to show right now!",
+                title: "Wait a minute!".localized(),
+                message: "We do not have ads to show right now!".localized(),
                 preferredStyle: .alert)
             let alertAction = UIAlertAction(
                 title: "OK",
@@ -232,8 +235,8 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     ) {
         print("Rewarded ad failed to present with error: \(error.localizedDescription).")
         let alert = UIAlertController(
-            title: "Wait a minute!",
-            message: "We do not have ads to show right now!",
+            title: "Wait a minute!".localized(),
+            message: "We do not have ads to show right now!".localized(),
             preferredStyle: .alert)
         let alertAction = UIAlertAction(
             title: "OK",
