@@ -1,0 +1,32 @@
+{
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "grid-size" : "regular"
+  },
+  "stickers" : [
+    {
+      "filename" : "brazilSticker.sticker"
+    },
+    {
+      "filename" : "zombieSticker.sticker"
+    },
+    {
+      "filename" : "sticker5.sticker"
+    },
+    {
+      "filename" : "sticker4.sticker"
+    },
+    {
+      "filename" : "sticker3.sticker"
+    },
+    {
+      "filename" : "sticker2.sticker"
+    },
+    {
+      "filename" : "sticker1.sticker"
+    }
+  ]
+}
