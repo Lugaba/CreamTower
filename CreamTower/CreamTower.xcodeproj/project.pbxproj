@@ -20,6 +20,7 @@
 		DF4BF01327973B5F00417000 /* ItemEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4BF01227973B5F00417000 /* ItemEntity.swift */; };
 		DF4DAA0C279094D400FA4367 /* ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DAA0B279094D400FA4367 /* ItemRepository.swift */; };
 		DF4DAA0F2790966700FA4367 /* IceCreamBall.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DAA0E2790966700FA4367 /* IceCreamBall.swift */; };
+		DF9B68D627B1A78A00C34652 /* String+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B68D527B1A78A00C34652 /* String+Localize.swift */; };
 		DFB685CC27A0708300058E7F /* bgMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DFB685CB27A0708300058E7F /* bgMusic.mp3 */; };
 		DFC23F5627ADC7CE009E0D8F /* Stickers.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFC23F5527ADC7CE009E0D8F /* Stickers.xcassets */; };
 		DFC23F5A27ADC7CE009E0D8F /* CreamStickers.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DFC23F5327ADC7CD009E0D8F /* CreamStickers.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -76,6 +77,7 @@
 		DF4BF01227973B5F00417000 /* ItemEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemEntity.swift; sourceTree = "<group>"; };
 		DF4DAA0B279094D400FA4367 /* ItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepository.swift; sourceTree = "<group>"; };
 		DF4DAA0E2790966700FA4367 /* IceCreamBall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IceCreamBall.swift; sourceTree = "<group>"; };
+		DF9B68D527B1A78A00C34652 /* String+Localize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localize.swift"; sourceTree = "<group>"; };
 		DFB685CB27A0708300058E7F /* bgMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgMusic.mp3; sourceTree = "<group>"; };
 		DFC23F5327ADC7CD009E0D8F /* CreamStickers.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CreamStickers.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFC23F5527ADC7CE009E0D8F /* Stickers.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Stickers.xcassets; sourceTree = "<group>"; };
@@ -184,6 +186,14 @@
 			path = GameLogic;
 			sourceTree = "<group>";
 		};
+		DF9B68D427B1A77900C34652 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DF9B68D527B1A78A00C34652 /* String+Localize.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		DFC23F5427ADC7CD009E0D8F /* CreamStickers */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +226,7 @@
 		DFD26681278F1B84006B2551 /* CreamTower */ = {
 			isa = PBXGroup;
 			children = (
+				DF9B68D427B1A77900C34652 /* Extensions */,
 				DF07CED8279F2B6300D85635 /* Sounds */,
 				DF4BF01127973AA100417000 /* Classes */,
 				DF4BF0072796EA2300417000 /* Game Center */,
@@ -415,6 +426,7 @@
 				DF0736AC27906F3F006674C1 /* Model.xcdatamodeld in Sources */,
 				DFD26683278F1B84006B2551 /* AppDelegate.swift in Sources */,
 				DF4BEFFD2791E0AC00417000 /* PauseView.swift in Sources */,
+				DF9B68D627B1A78A00C34652 /* String+Localize.swift in Sources */,
 				DF4BF01327973B5F00417000 /* ItemEntity.swift in Sources */,
 				DF0736B027907002006674C1 /* ShopViewController.swift in Sources */,
 				DFF599552790618200BFD833 /* MenuViewController.swift in Sources */,
