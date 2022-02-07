@@ -1,0 +1,61 @@
+/*
+  Localization.strings
+  CreamTower
+
+  Created by Luca Hummel on 07/02/22.
+  
+*/
+
+
+// PauseView
+"Game Paused" = "Jogo Pausado";
+"Score" = "Pontos";
+"High" = "Melhor";
+
+// EndGameView
+"Game Over" = "Fim de Jogo";
+
+// Shop
+"Shop" = "Loja";
+"You do not have enough CreamGold" = "Você não possui CreamGolds suficientes";
+"Select" = "Selecionar";
+"Selected" = "Selecionado";
+"Wait a minute!" = "Espere um pouco!";
+"We do not have ads to show right now!" = "Nós não temos propagandas para mostrar agora!";
+"Flavors" = "Sabores";
+"Cones" = "Casquinhas";
+"Backgrounds" = "Fundos";
+
+// Itens
+"Strawberry" = "Morango";
+"Cream" = "Creme";
+"Pistachio" = "Pistache";
+"Coconut" = "Coco";
+"Dark Choco" = "Meio Amargo";
+"Neapolitan" = "Napolitano";
+"Acai" = "Açaí";
+"Life" = "Vida";
+"Rainbow" = "Arco-íris";
+"Brazil" = "Brasil";
+"Dalmatian" = "Dalmata";
+"Beach Ball" = "Praia";
+"Outline" = "Contorno";
+"Earth" = "Terra";
+"Candy" = "Doce";
+"Dance" = "Dançante";
+"Zombie" = "Zumbi";
+"Silver" = "Prata";
+"Gold" = "Ouro";
+
+"Yellow" = "Amarelo";
+"Red" = "Vermelho";
+"Green" = "Verde";
+"Pink" = "Rosa";
+"Purple" = "Roxo";
+"Black" = "Preto";
+"White" = "Branco";
+"MyLittleCone" = "PoneiEu";
+
+"Blue" = "Azul";
+"Brown" = "Marrom";
+"Blue-Green" = "Azul-Verde";
